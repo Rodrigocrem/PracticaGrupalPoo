@@ -9,16 +9,6 @@ Clases:
   -
   -
 
-Autores de la practica: 
+Autores de la practica: Manuel Luna Gimenez, Rodrigo López Chumillas.
 Profesor: Iván Barcia Santos
 Fecha de entrega: 26/04/2024
-
-
-#Clase 1:
- -->Aqui su codigo.
-
- #Clase 2
- -->Aqui su codigo.
-
- #Clase 3:
- -->Aqui su codigo.
