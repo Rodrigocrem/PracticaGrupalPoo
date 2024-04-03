@@ -10,5 +10,7 @@ Clases:
   -
 
 Autores de la practica: Manuel Luna Gimenez, Rodrigo López Chumillas.
-Profesor: Iván Barcia Santos
+
+Profesor: Iván Barcia Santos.
+
 Fecha de entrega: 26/04/2024
