@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MquinaDeVending
 {
-    internal class Produc_MaterialesPreciosos
+    internal class Produc_MaterialesPreciosos:Product_General
     {
 
     }

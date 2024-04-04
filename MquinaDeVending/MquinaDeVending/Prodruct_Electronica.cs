@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MquinaDeVending
 {
-    internal class Prodruct_Electronica
+    internal class Prodruct_Electronica:Product_General
     {
-
+       
     }
 }

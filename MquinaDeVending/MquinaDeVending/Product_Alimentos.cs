@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MquinaDeVending
 {
-    internal class Product_Alimentos
+    internal class Product_Alimentos:Product_General
     {
 
     }

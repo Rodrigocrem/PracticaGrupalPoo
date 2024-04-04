@@ -16,13 +16,21 @@ namespace MquinaDeVending
             int opcion = 0;
             do
             {
-                Console.WriteLine("Bienvenidos a nuestra maquina de vending :)");
-                Console.WriteLine("Para comenzar seleccione una opcion:");
-                Console.WriteLine("1. Comprar un producto.");
-                Console.WriteLine("2. Mostrar informacion de un producto.");
-                Console.WriteLine("3. Cargar productos de manera individual.");
-                Console.WriteLine("4. Cargar productos a tope.");
-                Console.WriteLine("6. Salir.");
+                Console.WriteLine("...................................................");
+                Console.WriteLine(".     Bienvenidos a nuestra maquina de vending     .");
+                Console.WriteLine("...................................................");
+                Console.WriteLine(".      Para comenzar seleccione una opcion:       .");
+                Console.WriteLine("...................................................");
+                Console.WriteLine(".      1. Comprar un producto                     .");
+                Console.WriteLine("...................................................");
+                Console.WriteLine("       2. Mostrar informacion de un producto      .");
+                Console.WriteLine("...................................................");
+                Console.WriteLine(".      3. Cargar productos de manera individual   .");
+                Console.WriteLine("...................................................");
+                Console.WriteLine(".      4. Cargar productos a tope                 .");
+                Console.WriteLine("...................................................");
+                Console.WriteLine(".      5. Salir                                   .");
+                Console.WriteLine("...................................................");
                 opcion = int.Parse(Console.ReadLine());
                 Console.Clear();
                 switch(opcion)
@@ -51,18 +59,43 @@ namespace MquinaDeVending
 
         public static void ComprarProducto()
         {
-            List<int> productoseleccionados = new List<int>();
             Console.WriteLine("Introduce el Id del producto a comprar: ");
-            int Id = int.Parse(Console.ReadLine());
-            Console.WriteLine("Para pagar seleccione: 0");
-            int pagar = int.Parse(Console.ReadLine());
-            foreach(int id in productoseleccionados)
+            int Idproducto = int.Parse(Console.ReadLine());
+            bool productoEncontrado = false;
+            foreach (Product_General producto in listaproductos)
             {
-                if(id == Id)
-                { Console.WriteLine("")} ///Terminar ahora centrarnos en otras cosas. 
+                if(Product_General.Id ==Idproducto)
+                {
+                    productoEncontrado = true;
+
+                    //Mostramos información del producto.
+                    Console.WriteLine("Producto seleccionado: ");
+                    Console.WriteLine(producto.ObtenerInformacionProducto());
+                    xº
+                    //Gestionamos la opcion de pago.
+                    Console.WriteLine("Para pagar seleccione: 0");
+                    int OpcionPago = int.Parse(Console.ReadLine());
+
+                    switch(OpcionPago)
+                    {
+                        case 0:
+                            Console.WriteLine("Seleccione metodo de pago:");
+                            break;
+                        case 1:
+                            Console.WriteLine("Opión de pago no valida.");
+                            break;
+                    }
+                }
+                break; //Salimos del bucle al encontrarse el producto.
             }
             
+            if(!productoEncontrado)
+            {
+                Console.WriteLine("Ha introducido un ID erróneo. Vuelva a intentarlo.");
+            }
         }
+
+
 
 
     }
