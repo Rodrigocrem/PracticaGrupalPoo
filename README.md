@@ -9,7 +9,7 @@ Clases:
   -
   -
 
-Autores de la practica: Manuel Luna Gimenez, Rodrigo López Chumillas.
+Autores de la practica: Manuel Luna Jimenez, Rodrigo López Chumillas.
 
 Profesor: Iván Barcia Santos.
 
