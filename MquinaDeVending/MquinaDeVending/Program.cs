@@ -12,6 +12,7 @@ namespace MquinaDeVending
         {
             Console.WriteLine("Bienvenidos a nuestra maquina de vending :)");
             Console.ReadKey();
+
         }
     }
 }

@@ -8,5 +8,6 @@ namespace MquinaDeVending
 {
     internal class Produc_MaterialesPreciosos
     {
+
     }
 }

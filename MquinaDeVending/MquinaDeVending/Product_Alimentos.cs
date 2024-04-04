@@ -8,5 +8,6 @@ namespace MquinaDeVending
 {
     internal class Product_Alimentos
     {
+
     }
 }
