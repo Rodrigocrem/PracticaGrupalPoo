@@ -26,23 +26,21 @@ namespace MquinaDeVending
             Descripcion = descripcion;
         }
 
-        public string ObtenerInforamcionProducto()
+        public virtual string ObtenerInforamcionProducto()
         {
             return $"Id: {Id}\n\t Nombre: {Nombre}\n\t Precio: {Precio}\n\t PrecioUnidad: {PrecioUnidad}\n\t Descripcion: {Descripcion} ";
         }
 
         public virtual void SolicitarDetalles()
         {
-            Console.WriteLine("Id: ");
+            Console.WriteLine("Introduce el Id: ");
             Id  = int.Parse(Console.ReadLine());
-            Console.WriteLine("Nombre: ");
+            Console.WriteLine("Intruduce el nombre: ");
             Nombre = Console.ReadLine();
-            Console.WriteLine("Precio: ");
+            Console.WriteLine("Introduca el precio: ");
             Precio = int.Parse(Console.ReadLine());
-            Console.WriteLine("Descripcion: ");
-            Descripcion = Console.ReadLine();
-            
-
+            Console.WriteLine("Introduca la descripcion: ");
+            Descripcion = Console.ReadLine();      
         }
 
 
