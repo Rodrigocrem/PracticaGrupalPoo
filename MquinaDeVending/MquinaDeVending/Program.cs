@@ -71,7 +71,7 @@ namespace MquinaDeVending
                     //Mostramos información del producto.
                     Console.WriteLine("Producto seleccionado: ");
                     Console.WriteLine(producto.ObtenerInformacionProducto());
-                    xº
+                    
                     //Gestionamos la opcion de pago.
                     Console.WriteLine("Para pagar seleccione: 0");
                     int OpcionPago = int.Parse(Console.ReadLine());

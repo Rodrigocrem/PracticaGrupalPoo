@@ -21,11 +21,10 @@ namespace MquinaDeVending
         Calorias = calorias;
         Grasa = grasa;
         Azucar = azucar;
-
     }
     public override string ObtenerInforamcionProducto()
     {
-        return $"({Id}) Titulo: {Titulo}\n\t Año: {Anio}\n\tGénero: {Genero}" + $"\n\tDirector: {Director}\n\tDuración: {Duracion} minutos" + $"\n\tNarrador: {Narrador}\n\tTema: {Tema}";
+        return $"Id: {Id}\n\t Nombre: {Nombre}\n\t Precio: {Precio}\n\t PrecioUnidad: {PrecioUnidad}\n\t Descripcion: {Descripcion}\n\t Calorias: {Calorias}\n\t Grasa: {Grasa} \n\t Azucar: {Azucar}";
     }
 
 

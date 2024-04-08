@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,13 @@ namespace MquinaDeVending
         {
             return $"Id: {Id}\n\t Nombre: {Nombre}\n\t Precio: {Precio}\n\t PrecioUnidad: {PrecioUnidad}\n\t Descripcion: {Descripcion}\n\t Material: {Material}\n\t Peso: {Peso} ";
         }
+        public override void ToFile()
+        {
+            StreamWriter sw = new StreamWriter("PElectronicos.txt", true);
+            sw.WriteLine($"{Id},{Nombre},{Precio},{Genero},{Director},{Duracion},{Narrador},{Tema}");
+            sw.Close();
+        }
+
 
     }
 }
