@@ -46,7 +46,7 @@
     <Compile Include="Admin.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Pago.cs" />
-    <Compile Include="Prodruct_Electronica.cs" />
+    <Compile Include="Product_Electronica.cs" />
     <Compile Include="Product_Alimentos.cs" />
     <Compile Include="Product_General.cs" />
     <Compile Include="Produc_MaterialesPreciosos.cs" />
