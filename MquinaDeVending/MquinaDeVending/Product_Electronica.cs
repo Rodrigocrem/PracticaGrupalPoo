@@ -20,7 +20,13 @@ namespace MquinaDeVending
             Material = material;
             Peso = peso;
         }
-
+        public void ContElectronica()
+        {
+            Console.WriteLine("Tipo de Material");
+            Material = Console.ReadLine();
+            Console.WriteLine("Introduce Preso ");
+            Peso = int.Parse(Console.ReadLine());
+        }
         public string SInfo()
         {
             return $"Id: {Id}\n\t Nombre: {Nombre}\n\t Precio: {Precio}\n\t PrecioUnidad: {PrecioUnidad}\n\t Descripcion: {Descripcion}\n\t Material: {Material}\n\t Peso: {Peso} ";

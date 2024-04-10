@@ -53,7 +53,7 @@ namespace MquinaDeVending
             Console.WriteLine("Introduce Descripcion: ");
             Descripcion = Console.ReadLine();
         }
-        public abstract void ToInfo();
-        internal abstract bool ObtenerInformacionProducto();
+        public abstract void ToFile();
+        
     }
 }

@@ -22,7 +22,15 @@ namespace MquinaDeVending
             Azucar = azucar;
             Grasa = grasa;
         }
-
+        public void ContAlimentacion()
+        {
+            Console.WriteLine("Introduce las calorias:");
+            Calorias =  int.Parse(Console.ReadLine());
+            Console.WriteLine("Introduce la grasa: ");
+            Grasa = int.Parse(Console.ReadLine());
+            Console.WriteLine("Introduce el azucar:");
+            Azucar = int.Parse(Console.ReadLine());
+        }
         public override string SInfo()
         {
             return $"Id: {Id}\n\t Nombre: {Nombre}\n\t Precio: {Precio}\n\t PrecioUnidad: {PrecioUnidad}\n\t Descripcion: {Descripcion}\n\t Calorias: {Calorias}\n\t Grasa: {Grasa} \n\t Azucar: {Azucar}";
