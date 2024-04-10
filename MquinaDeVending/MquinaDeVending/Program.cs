@@ -20,7 +20,7 @@ namespace MquinaDeVending
             {
               
 
-                Console.WriteLine(".      Para comenzar seleccione una opcion:.");
+                Console.WriteLine(".      Para comenzar seleccione una opcion:");
                 Console.WriteLine("╔════════════════════════════════════════════╗");
                 Console.WriteLine("║            Máquina expendedora             ║");
                 Console.WriteLine("╚════════════════════════════════════════════╝");
