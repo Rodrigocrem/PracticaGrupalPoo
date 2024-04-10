@@ -62,34 +62,51 @@ namespace MquinaDeVending
             Console.WriteLine("Introduce el Id del producto a comprar: ");
             int Idproducto = int.Parse(Console.ReadLine());
             bool productoEncontrado = false;
+
             foreach (Product_General producto in listaproductos)
             {
-                if(Product_General.Id ==Idproducto)
+                if (producto.Id == Idproducto)
                 {
                     productoEncontrado = true;
 
-                    //Mostramos información del producto.
+                    // Mostramos información del producto.
                     Console.WriteLine("Producto seleccionado: ");
                     Console.WriteLine(producto.ObtenerInformacionProducto());
-                    
-                    //Gestionamos la opcion de pago.
-                    Console.WriteLine("Para pagar seleccione: 0");
+
+                    // Gestionamos la opción de pago.
+                    Console.WriteLine("Seleccione método de pago:");
+                    Console.WriteLine("1 - Efectivo");
+                    Console.WriteLine("2 - Tarjeta");
                     int OpcionPago = int.Parse(Console.ReadLine());
 
-                    switch(OpcionPago)
+                    switch (OpcionPago)
                     {
-                        case 0:
-                            Console.WriteLine("Seleccione metodo de pago:");
-                            break;
                         case 1:
-                            Console.WriteLine("Opión de pago no valida.");
+                            Pago_Efectivo pagoEfectivo = new Pago_Efectivo();
+                            pagoEfectivo.RealizarPago(producto.Precio);
+                            break;
+                        case 2:
+                            Console.WriteLine("Introduce el número de tarjeta:");
+                            string numeroTarjeta = Console.ReadLine();
+                            Console.WriteLine("Introduce el nombre del titular:");
+                            string nombreTitular = Console.ReadLine();
+                            Console.WriteLine("Introduce la fecha de expiración (MM/YY):");
+                            string fechaExpiracion = Console.ReadLine();
+                            Console.WriteLine("Introduce el código de seguridad:");
+                            int codigoSeguridad = int.Parse(Console.ReadLine());
+
+                            Pago_Tarjeta pagoTarjeta = new Pago_Tarjeta(numeroTarjeta, nombreTitular, fechaExpiracion, codigoSeguridad);
+                            pagoTarjeta.RealizarPago(producto.Precio);
+                            break;
+                        default:
+                            Console.WriteLine("Opción de pago no válida.");
                             break;
                     }
                 }
-                break; //Salimos del bucle al encontrarse el producto.
+                break; // Salimos del bucle al encontrar el producto.
             }
-            
-            if(!productoEncontrado)
+
+            if (!productoEncontrado)
             {
                 Console.WriteLine("Ha introducido un ID erróneo. Vuelva a intentarlo.");
             }

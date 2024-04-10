@@ -54,5 +54,6 @@ namespace MquinaDeVending
             Descripcion = Console.ReadLine();
         }
         public abstract void ToInfo();
+        internal abstract bool ObtenerInformacionProducto();
     }
 }

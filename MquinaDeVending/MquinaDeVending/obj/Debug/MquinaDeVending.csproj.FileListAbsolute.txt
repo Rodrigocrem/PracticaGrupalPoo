@@ -1,0 +1,3 @@
+C:\Users\Crem\Source\Repos\PracticaGrupalPoo\MquinaDeVending\MquinaDeVending\obj\Debug\MquinaDeVending.csproj.AssemblyReference.cache
+C:\Users\Crem\Source\Repos\PracticaGrupalPoo\MquinaDeVending\MquinaDeVending\obj\Debug\MquinaDeVending.csproj.SuggestedBindingRedirects.cache
+C:\Users\Crem\Source\Repos\PracticaGrupalPoo\MquinaDeVending\MquinaDeVending\obj\Debug\MquinaDeVending.csproj.CoreCompileInputs.cache
