@@ -36,7 +36,7 @@ namespace MquinaDeVending
                 switch(opcion)
                 {
                     case 1:
-                        //
+                        ComprarProducto();
                         break;
                     case 2:
                         //
