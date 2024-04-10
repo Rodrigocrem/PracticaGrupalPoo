@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace MquinaDeVending
 {
-    internal class Pago
+    internal class Pago_Efectivo
     {
-        public abstract void RealizarPago(double cantidad);
-
     }
 }

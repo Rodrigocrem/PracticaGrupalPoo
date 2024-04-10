@@ -46,6 +46,8 @@
     <Compile Include="Admin.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Pago.cs" />
+    <Compile Include="Pago_Efectivo.cs" />
+    <Compile Include="Pago_Tarjeta.cs" />
     <Compile Include="Product_Electronica.cs" />
     <Compile Include="Product_Alimentos.cs" />
     <Compile Include="Product_General.cs" />
