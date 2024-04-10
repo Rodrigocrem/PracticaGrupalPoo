@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MquinaDeVending
@@ -25,9 +26,34 @@ namespace MquinaDeVending
         }
         public void ContMPreciosos ()
         {
-            Console.WriteLine("Introduce el material: ");
-            Console.WriteLine("¿Desea pilas?(Si/No)");
-            Console.WriteLine("¿El producto esta precargado?(Si/No)");
+            Thread.Sleep(1000);
+            int TPilas;
+            
+            //REVISAR
+            Console.WriteLine("Introduce Material: ");
+            Material = Console.ReadLine();
+
+            Console.WriteLine("Incluye Pilas (Sí=0/No=1): ");
+            TPilas = int.Parse(Console.ReadLine());
+
+            if(TPilas == 0)
+            {
+                Pilas = true;
+            }
+            else
+            {
+                Pilas = false;
+            }
+            Console.WriteLine("Precargado (Sí=0/No=1): ");
+            if (TPilas == 0)
+            {
+                Precargado = true;
+            }
+            else
+            {
+                Precargado = false;
+            }
+
         }
         public string SInfo()
         {
