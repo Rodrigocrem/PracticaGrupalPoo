@@ -34,25 +34,27 @@ namespace MquinaDeVending
             Precio = precio;
             PrecioUnidad = precioUnidad;
         }
+        public virtual void MInfo() 
+        {
+          Console.WriteLine("Introduce Id:");
+          Id = int.Parse(Console.ReadLine());
+          Console.WriteLine("Introduce Nombre: ");
+          Nombre = Console.ReadLine();
+          Console.WriteLine("Introduce Precio: ");
+          Precio = double.Parse(Console.ReadLine()) ;
+          Console.WriteLine("¿Cuantas unidades desea?: ");
+          PrecioUnidad = int.Parse(Console.ReadLine());
+          Console.WriteLine("Introduce Descripcion: ");
+          Descripcion = Console.ReadLine();
+        }
+        
 
         public virtual string SInfo()
         {
             return $"Id: {Id}\n\t Nombre: {Nombre}\n\t Precio: {Precio}\n\t PrecioUnidad: {PrecioUnidad}\n\t Descripcion: {Descripcion}";
         }
 
-        public virtual void MInfo() 
-        {
-            Console.WriteLine("Introduce Id:");
-            Id = int.Parse(Console.ReadLine());
-            Console.WriteLine("Introduce Nombre: ");
-            Nombre = Console.ReadLine();
-            Console.WriteLine("Introduce Precio: ");
-            Precio = double.Parse(Console.ReadLine()) ;
-            Console.WriteLine("Introduce PrecioUnidad: ");
-            PrecioUnidad = int.Parse(Console.ReadLine());
-            Console.WriteLine("Introduce Descripcion: ");
-            Descripcion = Console.ReadLine();
-        }
+       
         public abstract void ToFile();
         
     }
