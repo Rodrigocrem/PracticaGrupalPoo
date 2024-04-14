@@ -35,7 +35,7 @@ namespace MquinaDeVending
                 switch(opcion)
                 {
                     case 1:
-                        ComprarProducto();
+                        AñadirContenido();
                         break;
                     case 2:
                         //
@@ -54,6 +54,34 @@ namespace MquinaDeVending
                         break;
                 }
             } while (opcion != 6);
+        }
+        public static void AñadirContenido()
+        {
+            int opcion = 0;
+            Console.Clear();
+            Console.WriteLine("¿Que desea comprar?: ");
+            Console.WriteLine("1. Producto Electronico. ");
+            Console.WriteLine("2. Producto Alimenticio");
+            Console.WriteLine("3. Producto Material Precioso");
+            Console.WriteLine(" Introduzca opcion: ");
+            opcion = int.Parse(Console.ReadLine());
+            switch (opcion)
+            {
+                case 1:
+                    Product_Electronica p = new Product_Electronica();
+                    p.MInfo();
+                    break;
+                case 2:
+                    Product_Alimentos d = new Product_Alimentos();
+                    d.MInfo();
+                    break;
+                case 3:
+                    Product_MaterialesPrecios f = new Product_MaterialesPrecios();
+                    f.MInfo();
+                    break;
+
+            }
+
         }
 
         public static void ComprarProducto()
