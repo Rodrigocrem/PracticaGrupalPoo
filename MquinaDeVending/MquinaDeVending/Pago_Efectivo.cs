@@ -11,7 +11,17 @@ namespace MquinaDeVending
         public override void RealizarPago(double cantidad)
         {
             Console.WriteLine($"Pagando en efectivo: ${cantidad}");
-            // Aquí pondremos la lógica para realizar el pago en efectivo
+            string dinero = GestionarPago(cantidad);
+            Console.WriteLine("Monedas introducidas: " + dinero);
+
+        }
+
+        private string GestionarPago(double cantidad)
+        {
+            int[] ValorDinero = { 20, 10, 5, 2, 1};
+            int[] centimos = (int)(cantidad * 100); //Revisar esto. 
+            StringBuilder monedasEntregadas = new StringBuilder();
+
         }
     }
 }
