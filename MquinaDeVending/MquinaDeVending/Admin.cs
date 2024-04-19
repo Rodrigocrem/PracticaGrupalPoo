@@ -14,7 +14,7 @@ namespace MquinaDeVending
         public string Nombre { get; private set; }
         private string Password { get; set; }
 
-        protected List<Product_General> listaroductos;
+        protected List<Product_General> listaProductos;
 
 
         public Admin(List<Product_General> contenidos)
@@ -32,16 +32,17 @@ namespace MquinaDeVending
 
         
 
-        public bool Login(string nickname, string password) //Login(string nickname, string password), que devolverá true si el usuario y contraseña es correcto, false en caso contrario
+        public bool Login() //Login(string nickname, string password), que devolverá true si el usuario y contraseña es correcto, false en caso contrario
         {
-            if (Nickname == nickname && Password == password)
+            Console.WriteLine("Introduce usuario:");
+            string UsuarioComprobar = Console.ReadLine();
+            Console.WriteLine("Introduce la contraseña:");
+            string ContraseñaComprobar = Console.ReadLine();
+            if(UsuarioComprobar==Nickname && ContraseñaComprobar==Password)
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         public void ToFile()
@@ -51,8 +52,5 @@ namespace MquinaDeVending
             sw.WriteLine($"{Nickname};{Nombre};{Password}");
             sw.Close();
         }
-
-        public abstract void Menu();
-        public abstract void Salir();
     }
 }
