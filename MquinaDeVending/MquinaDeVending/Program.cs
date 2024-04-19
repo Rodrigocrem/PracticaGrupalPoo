@@ -58,7 +58,10 @@ namespace MquinaDeVending
                 }
             } while (opcion != 6);
         }
-       
+        public static void AContIndividual()
+        {
+
+        }
 
         public static void AñadirContenido()
         {

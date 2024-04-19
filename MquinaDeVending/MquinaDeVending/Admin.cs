@@ -7,42 +7,88 @@ using System.Threading.Tasks;
 
 namespace MquinaDeVending
 {
-    internal class Admin
+    internal class Admin:Usuarios
     {
-        public int Id { get; private set; }
-        public string Nickname { get; private set; }
-        public string Nombre { get; private set; }
-        private string Password { get; set; }
+        public Admin(List<Product_General> content):base(content) { }
 
-        protected List<Product_General> listaProductos;
-
-
-        public Admin(List<Product_General> contenidos)
-        {
-            listaProductos = contenidos;
-        }
-
-        public Admin(int id, string nickname, string password, List<Product_General> listaproductos)
+        public Admin(int id, string nombre, string password, List<Product_General> listaproductos)
         {
             Id = id;
-            Nickname = nickname;
+            Nombre = nombre;
             Password = password;
             listaProductos = listaproductos;
         }
 
-        
-
-        public bool Login() //Login(string nickname, string password), que devolverá true si el usuario y contraseña es correcto, false en caso contrario
+        public override void Menu()
         {
-            Console.WriteLine("Introduce usuario:");
-            string UsuarioComprobar = Console.ReadLine();
-            Console.WriteLine("Introduce la contraseña:");
-            string ContraseñaComprobar = Console.ReadLine();
-            if(UsuarioComprobar==Nickname && ContraseñaComprobar==Password)
+            int opcion = 0;
+            do
             {
-                return true;
+                Console.Clear();
+                Console.WriteLine("¿Que desea hacer?");
+                Console.WriteLine("1. Añadir producto electronico. ");
+                Console.WriteLine("2. Añadir producto alimenticio");
+                Console.WriteLine("3. Añadir producto material precioso");
+                Console.WriteLine(" Introduzca opcion: ");
+
+                opcion = int.Parse(Console.ReadLine());
+                Console.Clear();
+                switch (opcion)
+                {
+                    case 1: 
+                        break;
+                    case 2: 
+                        break;
+                    case 3: 
+                        break;
+                    case 4: 
+                        break;
+                    case 5: 
+                        break;
+                    default:
+                        break;
+
+                }
             }
-            return false;
+            while (true) 
+
+
         }
+        public void AñadirContenido()
+        {
+
+            int opcion = 0;
+            Console.Clear();
+            Console.WriteLine("¿Que desea hacer?");
+            Console.WriteLine("1. Añadir producto electronico. ");
+            Console.WriteLine("2. Añadir producto alimenticio");
+            Console.WriteLine("3. Añadir producto material precioso");
+            Console.WriteLine(" Introduzca opcion: ");
+            
+            
+                opcion = int.Parse(Console.ReadLine());
+                switch (opcion)
+                {
+                    case 1: //Añadir Producto 1.
+                        
+
+                        break;
+                    case 2: //Añadir Producto 2.
+
+                        break;
+                    case 3: //Añadir Producto 2.
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        
+                        break;
+                }
+            Console.WriteLine("Pulse una tecla para continuar: ");
+            Console.ReadKey();
+
+        }
+
+
     }
 }
