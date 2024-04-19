@@ -12,9 +12,17 @@ namespace MquinaDeVending
     internal class Program
     {
         static List<Product_General> listaproductos = new List<Product_General>();
+        static List<Admin> listaUsuarios = new List<Admin>();
+
 
         static void Main(string[] args)
         {
+            if (!CargarUsuarioDeArchivo()) //si no hay usuarios, creamos el admin. 
+            {
+                Admin admin = new Admin(0, "admin", "Admin", "Admin", "Admin", "admin",listaproductos);
+                listaUsuarios.Add(admin);
+                admin.ToFile(); //Guardams el admin en el archivo.
+            }
             int opcion = 0;
             do
             {
@@ -55,6 +63,28 @@ namespace MquinaDeVending
                 }
             } while (opcion != 6);
         }
+        public static void IniciarSesion()
+        {
+            Console.WriteLine("Introduce tu usuario: ");
+            string nickname = Console.ReadLine();
+            Console.WriteLine("Introduce tu contraseña: ");
+            string password = Console.ReadLine();
+            bool usuarioEncontrado = false;
+            foreach (Admin usuario in listaUsuarios)
+            {
+                if (usuario.Login(nickname, password))
+                {
+                    usuarioEncontrado = true;
+                    usuario.Menu();
+                    break;
+                }
+            }
+            if (!usuarioEncontrado)
+            {
+                Console.WriteLine("Usuario o contraseña incorrectos.");
+            }
+        }
+
         public static void AñadirContenido()
         {
             int opcion = 0;
