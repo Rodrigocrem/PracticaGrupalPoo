@@ -146,6 +146,58 @@ namespace MquinaDeVending
                 Console.WriteLine("Ha introducido un ID erróneo. Vuelva a intentarlo.");
             }
         }
-        
+
+        public static void IniciarSesion()
+        {
+            Console.WriteLine("Introduce el usuario: ");
+            string nickname = Console.ReadLine();
+            Console.WriteLine("Introduce tu contraseña: ");
+            string password = Console.ReadLine();
+            bool usuarioEncontrado = false;
+            foreach (Usuarios usuario in listaUsuarios)
+            {
+                if (Usuarios.Login(nickname, password))
+                {
+                    usuarioEncontrado = true;
+                    usuario.Menu();
+                    break;
+                }
+            }
+            if (!usuarioEncontrado)
+            {
+                Console.WriteLine("Usuario o contraseña incorrectos.");
+            }
+        }
+        public static void Registrarse()
+        {
+            Console.WriteLine("Introduce tu nombre: ");
+            string nombre = Console.ReadLine();
+            Console.WriteLine("Introduce tu primer apellido: ");
+            string ape1 = Console.ReadLine();
+            Console.WriteLine("Introduce tu segundo apellido: ");
+            string ape2 = Console.ReadLine();
+            Console.WriteLine("Introduce tu usuario: ");
+            string nickname = Console.ReadLine();
+            bool usuarioEncontrado = false;
+            foreach (Usuarios usuario2 in listaUsuarios) // Preguntar a Iván. 
+            {
+                if (usuario2.Nickname == nickname)
+                {
+                    Console.WriteLine("El usuario ya existe.");
+                    return;
+                }
+            }
+            if (usuarioEncontrado)
+            {
+
+            }
+            Console.WriteLine("Introduce tu contraseña: ");
+            string password = Console.ReadLine();
+            Cliente usuario = new Cliente(listaUsuarios.Count + 1, nickname, nombre, ape1, ape2, password, listacontenidos);
+            listaUsuarios.Add(usuario);
+            Usuarios.ToFile(); //Guardamos el admin en el archivo.
+        }
+
+
     }
 }
