@@ -44,13 +44,5 @@ namespace MquinaDeVending
             }
             return false;
         }
-
-        public void ToFile()
-        {
-            //Abrimos el archivo en modo append, para sobreescribir los datos existentes.
-            StreamWriter sw = new StreamWriter("usuarios.txt", true);
-            sw.WriteLine($"{Nickname};{Nombre};{Password}");
-            sw.Close();
-        }
     }
 }

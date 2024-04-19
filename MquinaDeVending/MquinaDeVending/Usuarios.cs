@@ -8,6 +8,5 @@ namespace MquinaDeVending
 {
     internal class Usuarios
     {
-
     }
 }
