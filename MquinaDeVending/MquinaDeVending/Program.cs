@@ -196,7 +196,7 @@ namespace MquinaDeVending
             string password = Console.ReadLine();
             Cliente usuario = new Cliente(listaUsuarios.Count + 1, nickname, nombre, password, listaproductos);
             listaUsuarios.Add(usuario);
-            Usuarios.ToFile(); //Guardamos el admin en el archivo.
+            usuario.ToFile(); //Guardamos el admin en el archivo.
         }
 
 
