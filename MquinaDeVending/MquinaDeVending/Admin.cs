@@ -108,7 +108,7 @@ namespace MquinaDeVending
             }
             return contenidoTemp; 
         }
-        public void EliminarContenido(Product_General c)
+        public void EliminarProducto(Product_General c)
         {
             if (c != null) 
             {
@@ -123,42 +123,41 @@ namespace MquinaDeVending
         public void AddElectronicos()
         {
             Console.Clear();
-            Console.WriteLine("--- Listado de películas ---");
+            Console.WriteLine("--- Productos Electronicos ---");
             Console.WriteLine();
             foreach (Product_General c in listaProductos)
             {
-                if ( c is Product_Electronica ) //Si el contenido es de tipo Pelicula, lo mostramos.
+                if ( c is Product_Electronica ) 
                 {
-                    Console.WriteLine(c.MInfo());
+                    Console.WriteLine(c.SInfo());
                 }
             }
         }
         public void AddAlimenticios()
         {
             Console.Clear();
-            Console.WriteLine("--- Listado de películas ---");
+            Console.WriteLine("--- Productos Alimenticios ---");
             Console.WriteLine();
             foreach (Product_General c in listaProductos)
             {
-                if (c is Product_Alimentos) //Si el contenido es de tipo Pelicula, lo mostramos.
+                if (c is Product_Alimentos) 
                 {
-                    Console.WriteLine(c.MInfo());
+                    Console.WriteLine(c.SInfo());
                 }
             }
         }
         public void AddMPreciosos()
         {
             Console.Clear();
-            Console.WriteLine("--- Listado de películas ---");
+            Console.WriteLine("--- Materiales preciosos ---");
             Console.WriteLine();
             foreach (Product_General c in listaProductos)
             {
-                if (c is Product_MaterialesPrecios) //Si el contenido es de tipo Pelicula, lo mostramos.
-                {
-                    Console.WriteLine(c.MInfo());
-                }
+                if (c is Product_MaterialesPrecios) 
+                    Console.WriteLine(c.SInfo());
+                
             }
-        }
-       
-    }
+        }     
+    }   
 }
+

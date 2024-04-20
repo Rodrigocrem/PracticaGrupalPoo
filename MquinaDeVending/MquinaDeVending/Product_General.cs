@@ -27,12 +27,9 @@ namespace MquinaDeVending
             Descripcion = descripcion;
         }
 
-        protected Product_General(int id, string nombre, double precio, int precioUnidad)
+       public virtual string SInfo()
         {
-            Id = id;
-            Nombre = nombre;
-            Precio = precio;
-            PrecioUnidad = precioUnidad;
+            return $"Id: {Id}\n\t Nombre: {Nombre}\n\t Precio: {Precio}\n\t PrecioUnidad: {PrecioUnidad}\n\t Descripcion: {Descripcion}";
         }
         public virtual void MInfo() 
         {
@@ -47,13 +44,6 @@ namespace MquinaDeVending
           Console.WriteLine("Introduce Descripcion: ");
           Descripcion = Console.ReadLine();
         }
-        
-
-        public virtual string SInfo()
-        {
-            return $"Id: {Id}\n\t Nombre: {Nombre}\n\t Precio: {Precio}\n\t PrecioUnidad: {PrecioUnidad}\n\t Descripcion: {Descripcion}";
-        }
-
        
         public abstract void ToFile();
         

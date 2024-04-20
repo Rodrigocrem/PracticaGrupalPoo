@@ -12,6 +12,7 @@ namespace MquinaDeVending
     internal class Program
     {
         static List<Product_General> listaproductos = new List<Product_General>();
+        static List<Usuarios> listaUsuarios = new List<Usuarios>();
 
 
         static void Main(string[] args)
@@ -156,7 +157,7 @@ namespace MquinaDeVending
             bool usuarioEncontrado = false;
             foreach (Usuarios usuario in listaUsuarios)
             {
-                if (Usuarios.Login(nickname, password))
+                if (usuario.Login(nickname, password))
                 {
                     usuarioEncontrado = true;
                     usuario.Menu();
@@ -193,7 +194,7 @@ namespace MquinaDeVending
             }
             Console.WriteLine("Introduce tu contraseña: ");
             string password = Console.ReadLine();
-            Cliente usuario = new Cliente(listaUsuarios.Count + 1, nickname, nombre, ape1, ape2, password, listacontenidos);
+            Cliente usuario = new Cliente(listaUsuarios.Count + 1, nickname, nombre, password, listaproductos);
             listaUsuarios.Add(usuario);
             Usuarios.ToFile(); //Guardamos el admin en el archivo.
         }

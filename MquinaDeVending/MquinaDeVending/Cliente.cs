@@ -7,54 +7,131 @@ using System.Threading.Tasks;
 
 namespace MquinaDeVending
 {
-    internal class Cliente
+    internal class Cliente: Usuarios
     {
-        public int Id { get; private set; }
-        public string Nickname { get; private set; }
-        public string Nombre { get; private set; }
-        private string Password { get; set; }
+        private List<Product_General> Favoritos;
 
-        protected List<Product_General> listaProductos;
-
-        public Usuarios(List<Product_General> content)
+        public Cliente(List<Product_General> listProducto) : base(listProducto)
         {
-            listaProductos = content;
-        }
-        public Usuarios(int id, string nombre, string nickname, string password, List<Product_General> listaproductos)
-        {
-            Id = id;
-            Nombre = nombre;
-            Nickname = nickname;
-            Password = password;
-            listaProductos = listaproductos;
-        }
-        public string GetRealName()
-        {
-            return $"{Nombre}";
+            Favoritos = new List<Product_General>();
         }
 
-        public bool Login()
+        public Cliente(int id, string nickname, string nombre, string password, List<Product_General> listaProducto)
+          : base(id, nickname, nombre, password, listaProducto)
         {
-            Console.WriteLine("Introduce usuario:");
-            string UsuarioComprobar = Console.ReadLine();
-            Console.WriteLine("Introduce la contraseña:");
-            string ContraseñaComprobar = Console.ReadLine();
-            if (UsuarioComprobar == Nickname && ContraseñaComprobar == Password)
+            Favoritos = new List<Product_General>();
+        }
+
+        public override void Menu()
+        {
+            Favoritos.Clear();
+            CargarFavoritos();
+
+            int opcion = 0;
+
+            do
             {
-                return true;
-            }
-            return false;
-        }
-        public void ToFile()
-        {
+                Console.Clear();
+                Console.WriteLine("1. Ver favoritos");
+                Console.WriteLine("2. Añadir favoritos.");
+                Console.WriteLine("3. Eliminar favoritos.");
+                Console.WriteLine("4. Salir");
+                Console.Write("Opcion: ");
+                try
+                {
+                    switch (opcion)
+                    {
+                        case 1:
+                            Console.WriteLine("Favoritos: ");
+                            foreach (Product_General c in Favoritos)
+                            {
+                                Console.WriteLine(c.SInfo());
+                            }
+                            break;
+                        case 2:
+                            Console.WriteLine("Añadir favoritos: ");
+                            Console.WriteLine("Id del producto a añadir a favoritos: ");
+                            int id = int.Parse(Console.ReadLine());
 
-            //Abrimos el archivo en modo append, para sobreescribir los datos existentes.
-            StreamWriter sw = new StreamWriter("usuarios.txt", true);
-            sw.WriteLine($"{Id};{Nickname};{Nombre};{Password}");
+                            
+                            Product_General foundProduct = listaProductos.Find(c => c.Id == id);
+
+                            if (foundProduct != null)
+                            {
+                                Favoritos.Add(foundProduct);
+                                Console.WriteLine($"{foundProduct.Nombre} se ha añadido a favoritos.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("No se ha encontrado un producto con el ID introducido.");
+                            }
+                            break;
+                        case 3:
+                            Console.WriteLine("Id del producto a eliminar de favoritos: ");
+                            int idcontenido = int.Parse(Console.ReadLine());
+                            Product_General contenido = Favoritos.Find(c => c.Id == idcontenido); 
+                            if (contenido != null)
+                            {
+                                Favoritos.Remove(contenido);
+                                Console.WriteLine("producto eliminado de favoritos.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Producto no encontrado.");
+                            }
+                            break;
+                        case 4:
+                            Console.WriteLine("Saliendo...");
+                            break;
+                        default:
+                            
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Error: Opción inválida. Por favor, ingrese un número valido.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+                opcion = int.Parse(Console.ReadLine());
+                Console.Clear();
+
+            } while (opcion != 4);
+        }
+
+        public override void Salir()
+        {
+            
+            StreamWriter sw = new StreamWriter($"favoritos_{Nickname}.txt");
+            foreach (Product_General c in Favoritos)
+            {
+                sw.WriteLine(c.Id); 
+            }
             sw.Close();
         }
-        public abstract void Menu();
-        public abstract void Salir();
 
+        public void CargarFavoritos()
+        {
+           
+            if (File.Exists($"favoritos_{Nickname}.txt"))
+            {
+                StreamReader sr = new StreamReader($"favoritos_{Nickname}.txt");
+                string linea;
+                while ((linea = sr.ReadLine()) != null)
+                {
+                    int id = int.Parse(linea);
+                    Product_General producto = listaProductos.Find(c => c.Id == id);
+                    if (producto != null)
+                    {
+                        Favoritos.Add(producto);
+                    }
+                }
+                sr.Close();
+            }
+        }   
     }
 }
+
