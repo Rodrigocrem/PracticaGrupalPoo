@@ -73,7 +73,7 @@ namespace MquinaDeVending
                             if (contenido != null)
                             {
                                 Favoritos.Remove(contenido);
-                                Console.WriteLine("producto eliminado de favoritos.");
+                                Console.WriteLine("Producto eliminado de favoritos.");
                             }
                             else
                             {
