@@ -7,25 +7,15 @@ using System.Threading.Tasks;
 
 namespace MquinaDeVending
 {
-    internal class Cliente: Usuarios
+    internal class Cliente
     {
-        private List<Product_General> Favoritos;
 
-        public Cliente(List<Product_General> listProducto) : base(listProducto)
-        {
-            Favoritos = new List<Product_General>();
-        }
+        public Cliente() { }
 
-        public Cliente(int id, string nickname, string nombre, string password, List<Product_General> listaProducto)
-          : base(id, nickname, nombre, password, listaProducto)
-        {
-            Favoritos = new List<Product_General>();
-        }
 
-        public override void Menu()
+        public void Menu()
         {
-            Favoritos.Clear();
-            CargarFavoritos();
+
 
             int opcion = 0;
 
@@ -53,7 +43,7 @@ namespace MquinaDeVending
                             Console.WriteLine("Id del producto a añadir a favoritos: ");
                             int id = int.Parse(Console.ReadLine());
 
-                            
+
                             Product_General foundProduct = listaProductos.Find(c => c.Id == id);
 
                             if (foundProduct != null)
@@ -69,7 +59,7 @@ namespace MquinaDeVending
                         case 3:
                             Console.WriteLine("Id del producto a eliminar de favoritos: ");
                             int idcontenido = int.Parse(Console.ReadLine());
-                            Product_General contenido = Favoritos.Find(c => c.Id == idcontenido); 
+                            Product_General contenido = Favoritos.Find(c => c.Id == idcontenido);
                             if (contenido != null)
                             {
                                 Favoritos.Remove(contenido);
@@ -84,7 +74,7 @@ namespace MquinaDeVending
                             Console.WriteLine("Saliendo...");
                             break;
                         default:
-                            
+
                             break;
                     }
                 }
@@ -96,42 +86,42 @@ namespace MquinaDeVending
                 {
                     Console.WriteLine("Error: " + ex.Message);
                 }
-                opcion = int.Parse(Console.ReadLine());
-                Console.Clear();
+                finally
+                {
+                    opcion = int.Parse(Console.ReadLine());
+                    Console.Clear();
+                }
 
             } while (opcion != 4);
         }
 
-        public override void Salir()
+
+        public void VerProductos(List<Product_General> ListaProductos)
         {
-            
-            StreamWriter sw = new StreamWriter($"favoritos_{Nickname}.txt");
-            foreach (Product_General c in Favoritos)
+            foreach (Product_General p in ListaProductos)
             {
-                sw.WriteLine(c.Id); 
+                if (p is Product_Alimentos)
+                {
+
+                    Console.WriteLine(p.SInfo());
+                    Console.ReadKey();
+
+                }
+                else if (p is Product_Electronica)
+                {
+
+                    Console.WriteLine(p.SInfo());
+                    Console.ReadKey();
+
+                }
+                else if (p is Product_MaterialesPrecios)
+                {
+                    Console.WriteLine(p.SInfo());
+                    Console.ReadKey();
+                }
             }
-            sw.Close();
         }
 
-        public void CargarFavoritos()
-        {
-           
-            if (File.Exists($"favoritos_{Nickname}.txt"))
-            {
-                StreamReader sr = new StreamReader($"favoritos_{Nickname}.txt");
-                string linea;
-                while ((linea = sr.ReadLine()) != null)
-                {
-                    int id = int.Parse(linea);
-                    Product_General producto = listaProductos.Find(c => c.Id == id);
-                    if (producto != null)
-                    {
-                        Favoritos.Add(producto);
-                    }
-                }
-                sr.Close();
-            }
-        }   
     }
 }
 

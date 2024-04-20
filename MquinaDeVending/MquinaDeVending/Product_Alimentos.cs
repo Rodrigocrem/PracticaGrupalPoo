@@ -9,14 +9,14 @@ namespace MquinaDeVending
 {
     internal class Product_Alimentos : Product_General
     {
-        public int Calorias {  get; set; }
+        public int Calorias { get; set; }
         public int Grasa { get; set; }
-        public int Azucar { get; set;}
+        public int Azucar { get; set; }
 
         public Product_Alimentos() { }
 
-        public Product_Alimentos(int id, string nombre, double precio, int preciounidad, string descripcion, int calorias, int grasa, int azucar) 
-            :base(id, nombre, precio, preciounidad, descripcion)
+        public Product_Alimentos(int id, string nombre, double precio, int preciounidad, string descripcion, int calorias, int grasa, int azucar)
+            : base(id, nombre, precio, preciounidad, descripcion)
         {
             Calorias = calorias;
             Azucar = azucar;
@@ -25,7 +25,7 @@ namespace MquinaDeVending
         public void ContAlimentacion()
         {
             Console.WriteLine("Introduce las calorias:");
-            Calorias =  int.Parse(Console.ReadLine());
+            Calorias = int.Parse(Console.ReadLine());
             Console.WriteLine("Introduce la grasa: ");
             Grasa = int.Parse(Console.ReadLine());
             Console.WriteLine("Introduce el azucar:");
@@ -33,7 +33,7 @@ namespace MquinaDeVending
         }
         public override string SInfo()
         {
-            return $"Id: {Id}\n\t Nombre: {Nombre}\n\t Precio: {Precio}\n\t PrecioUnidad: {PrecioUnidad}\n\t Descripcion: {Descripcion}\n\t Calorias: {Calorias}\n\t Grasa: {Grasa} \n\t Azucar: {Azucar}";
+            return $"{base.SInfo()}\n\t Calorias: {Calorias}\n\t Grasa: {Grasa} \n\t Azucar: {Azucar}";
         }
         public override void ToFile()
         {
@@ -45,7 +45,7 @@ namespace MquinaDeVending
     }
 
 
-   
+
 
 
 }

@@ -8,7 +8,7 @@ namespace MquinaDeVending
 {
     internal class Pago
     {
-        public virtual  void RealizarPago(double cantidad)
+        public virtual void RealizarPago(double cantidad)
         {
             //Aqui añadimos metodos comunes de ambos pagos. 
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MquinaDeVending
 {
-    internal class Pago_Tarjeta:Pago
+    internal class Pago_Tarjeta : Pago
     {
         private string numeroTarjeta;
         private string nombreTitular;

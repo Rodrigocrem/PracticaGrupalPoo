@@ -24,11 +24,11 @@ namespace MquinaDeVending
             Material = material;
 
         }
-        public void ContMPreciosos ()
+        public void ContMPreciosos()
         {
             Thread.Sleep(1000);
             int TPilas;
-            
+
             //REVISAR
             Console.WriteLine("Introduce Material: ");
             Material = Console.ReadLine();
@@ -36,7 +36,7 @@ namespace MquinaDeVending
             Console.WriteLine("Incluye Pilas (Sí=0/No=1): ");
             TPilas = int.Parse(Console.ReadLine());
 
-            if(TPilas == 0)
+            if (TPilas == 0)
             {
                 Pilas = true;
             }
@@ -55,9 +55,9 @@ namespace MquinaDeVending
             }
 
         }
-        public string SInfo()
+        public override string SInfo()
         {
-            return $"Id: {Id}\n\t Nombre: {Nombre}\n\t Precio: {Precio}\n\t PrecioUnidad: {PrecioUnidad}\n\t Descripcion: {Descripcion}\n\t Material: {Material}\n\t Pilas: {Pilas} Precargado: {Precargado} ";
+            return $"{base.SInfo()}\n\t Material: {Material}\n\t Pilas: {Pilas} Precargado: {Precargado}";
         }
 
         public override void ToFile()

@@ -12,17 +12,18 @@ namespace MquinaDeVending
     internal class Program
     {
         static List<Product_General> listaproductos = new List<Product_General>();
-        static List<Usuarios> listaUsuarios = new List<Usuarios>();
+
 
 
         static void Main(string[] args)
         {
-            Admin admin = new Admin(0, "admin", "Admin", listaproductos);
-           
+            Admin admin = new Admin("Admin", "Admin");
+
+            Cliente cliente = new Cliente();
             int opcion = 0;
             do
             {
-              
+
 
                 Console.WriteLine(".      Para comenzar seleccione una opcion:");
                 Console.WriteLine("╔════════════════════════════════════════════╗");
@@ -36,28 +37,56 @@ namespace MquinaDeVending
                 Console.WriteLine("╚════════════════════════════════════════════╝");
                 opcion = int.Parse(Console.ReadLine());
                 Console.Clear();
-                switch(opcion)
+                switch (opcion)
                 {
                     case 1:
                         AñadirContenido();
                         break;
+
                     case 2:
-                        //
+                        cliente.VerProductos(listaproductos);
                         break;
+
                     case 3:
-                        
+                        bool Respusta = admin.IniciarSesion();
+                        if (Respusta == true)
+                        {
+                            Console.WriteLine("Contraseña correcta !!!!");
+                            admin.AñadirContenido(ref listaproductos);
+
+                        }
+                        else if (Respusta == false)
+                        {
+                            Console.WriteLine("Contraseña incorrecta !!!!");
+                        }
                         break;
+
+
                     case 4:
-                        IniciarSesion();
+                        bool respusta = admin.IniciarSesion();
+                        if (respusta == true)
+                        {
+                            Console.WriteLine("Contraseña correcta !!!!");
+
+
+                        }
+                        else if (respusta == false)
+                        {
+                            Console.WriteLine("Contraseña incorrecta !!!!");
+                        }
                         break;
-                    case 5:
-                        IniciarSesion();
-                        break;
-                    case 6://Salir.
-                        Console.WriteLine("Saliendo...");
+
+                    default:
+                        Console.WriteLine("Tu eres tonto? (jose manuel)");
+                        Console.ReadKey();
                         break;
                 }
-            } while (opcion != 6);
+            } while (opcion != 5);
+            if (opcion == 5)
+            {
+                Console.WriteLine("Gracias por todo gilipollas :)");
+                Console.ReadKey();
+            }
         }
         public static void AContIndividual()
         {
@@ -78,19 +107,30 @@ namespace MquinaDeVending
             {
                 case 1:
                     Product_Electronica p = new Product_Electronica();
-                    p.MInfo();
+                    p.AddProducto();
                     break;
                 case 2:
                     Product_Alimentos d = new Product_Alimentos();
-                    d.MInfo();
+                    d.AddProducto();
                     break;
                 case 3:
                     Product_MaterialesPrecios f = new Product_MaterialesPrecios();
-                    f.MInfo();
+                    f.AddProducto();
                     break;
 
             }
 
+        }
+
+        static void Salir()
+        {
+            FileStream fs = new FileStream($"Productos.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            StreamWriter sw = new StreamWriter(fs);
+            foreach (Product_General c in listaproductos)
+            {
+
+            }
+            sw.Close();
         }
 
         public static void ComprarProducto()
@@ -148,28 +188,8 @@ namespace MquinaDeVending
             }
         }
 
-        public static void IniciarSesion()
-        {
-            Console.WriteLine("Introduce el usuario: ");
-            string nickname = Console.ReadLine();
-            Console.WriteLine("Introduce tu contraseña: ");
-            string password = Console.ReadLine();
-            bool usuarioEncontrado = false;
-            foreach (Usuarios usuario in listaUsuarios)
-            {
-                if (usuario.Login(nickname, password))
-                {
-                    usuarioEncontrado = true;
-                    usuario.Menu();
-                    break;
-                }
-            }
-            if (!usuarioEncontrado)
-            {
-                Console.WriteLine("Usuario o contraseña incorrectos.");
-            }
-        }
-        
+
+
 
 
     }

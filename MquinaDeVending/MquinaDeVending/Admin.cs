@@ -7,62 +7,24 @@ using System.Threading.Tasks;
 
 namespace MquinaDeVending
 {
-    internal class Admin:Usuarios
+    internal class Admin
     {
-        public Admin(List<Product_General> content):base(content) { }
+        public string NickName { get; set; }
+        public string Password { get; set; }
 
-        public Admin(int id, string nombre, string nickname, string password, List<Product_General> listaproductos)
-            :base( id,  nombre,  nickname,  password, listaproductos)
+        public Admin() { }
+
+        public Admin(string nickName, string password)
         {
-            
+            NickName = nickName;
+            Password = password;
         }
 
-        public override void Menu()
+        public void Menu()
         {
-            int opcion = 0;
-            do
-            {
-                Console.Clear();
-                Console.WriteLine("¿Que desea hacer?");    
-                Console.WriteLine("1. Añadir Productos");
-                Console.WriteLine("2. Eliminar Producto");
-                Console.WriteLine("3. Ver Productos");              
-                Console.WriteLine(" Introduzca opcion: ");
-
-                opcion = int.Parse(Console.ReadLine());
-                Console.Clear();
-                switch (opcion)
-                {
-                    case 1:
-                        AñadirContenido();
-                        break;
-                    case 2:
-                        Console.WriteLine("--- P.Electronicos ---");
-                        AddElectronicos();
-                        Console.WriteLine("--- P.Alimenticios ---");
-                        AddAlimenticios();
-                        Console.WriteLine("--- M.Preciosos ---");
-                        AddMPreciosos();
-                        Console.WriteLine("Introduce el ID del contenido que quieres eliminar: ");
-                        int id = int.Parse(Console.ReadLine());
-
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        break;
-                    default:
-                        break;
-
-                }
-            }
-            while (opcion != 5); 
-
 
         }
-        public void AñadirContenido()
+        public void AñadirContenido(ref List<Product_General> ListaProductos)
         {
 
             int opcion = 0;
@@ -72,92 +34,56 @@ namespace MquinaDeVending
             Console.WriteLine("2. Añadir producto alimenticio");
             Console.WriteLine("3. Añadir producto material precioso");
             Console.WriteLine(" Introduzca opcion: ");
-            
-            
-                opcion = int.Parse(Console.ReadLine());
-                switch (opcion)
-                {
-                    case 1: //Añadir Producto 1.
-                        
 
-                        break;
-                    case 2: //Añadir Producto 2.
+            opcion = int.Parse(Console.ReadLine());
+            switch (opcion)
+            {
+                case 1:
+                    Product_Electronica product_Electronica = new Product_Electronica();
+                    product_Electronica.AddProducto();
+                    ListaProductos.Add(product_Electronica);
+                    break;
 
-                        break;
-                    case 3: //Añadir Producto 2.
-                        break;
-                    case 4:
-                        break;
-                    default:
-                        
-                        break;
-                }
+                case 2:
+                    Product_Alimentos product_Alimentos = new Product_Alimentos();
+                    product_Alimentos.AddProducto();
+                    ListaProductos.Add(product_Alimentos);
+                    break;
+
+                case 3:
+                    Product_MaterialesPrecios product_MaterialesPrecios = new Product_MaterialesPrecios();
+                    product_MaterialesPrecios.AddProducto();
+                    ListaProductos.Add(product_MaterialesPrecios);
+                    break;
+
+
+                default:
+
+                    break;
+            }
             Console.WriteLine("Pulse una tecla para continuar: ");
             Console.ReadKey();
         }
-        public Product_General BuscarProducto(int id)
+
+        public bool IniciarSesion()
         {
-            Product_General  contenidoTemp = null;
-            foreach (Product_General c in listaProductos)
+            Console.WriteLine("Introduce el usuario: ");
+            string nickname = Console.ReadLine();
+            Console.WriteLine("Introduce tu contraseña: ");
+            string password = Console.ReadLine();
+
+            if (NickName == nickname && Password == password)
             {
-                if (c.Id == id)
-                {
-                    contenidoTemp = c; 
-                    break;
-                }
+                return true;
             }
-            return contenidoTemp; 
+            else
+            {
+                return false;
+            }
+
+
         }
-        public void EliminarProducto(Product_General c)
-        {
-            if (c != null) 
-            {
-               listaProductos.Remove(c);
-               Console.WriteLine("Contenido eliminado");
-            }
-            else  
-            {
-              Console.WriteLine("No se ha encontrado un contenido con el ID introducido.");
-            }
-        }
-        public void AddElectronicos()
-        {
-            Console.Clear();
-            Console.WriteLine("--- Productos Electronicos ---");
-            Console.WriteLine();
-            foreach (Product_General c in listaProductos)
-            {
-                if ( c is Product_Electronica ) 
-                {
-                    Console.WriteLine(c.SInfo());
-                }
-            }
-        }
-        public void AddAlimenticios()
-        {
-            Console.Clear();
-            Console.WriteLine("--- Productos Alimenticios ---");
-            Console.WriteLine();
-            foreach (Product_General c in listaProductos)
-            {
-                if (c is Product_Alimentos) 
-                {
-                    Console.WriteLine(c.SInfo());
-                }
-            }
-        }
-        public void AddMPreciosos()
-        {
-            Console.Clear();
-            Console.WriteLine("--- Materiales preciosos ---");
-            Console.WriteLine();
-            foreach (Product_General c in listaProductos)
-            {
-                if (c is Product_MaterialesPrecios) 
-                    Console.WriteLine(c.SInfo());
-                
-            }
-        }     
-    }   
+
+    }
 }
 

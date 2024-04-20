@@ -9,7 +9,7 @@ namespace MquinaDeVending
 {
     internal class Product_Electronica : Product_General
     {
-        public string Material {  get; set; }
+        public string Material { get; set; }
         public int Peso { get; set; }
 
         public Product_Electronica() { }
@@ -20,8 +20,9 @@ namespace MquinaDeVending
             Material = material;
             Peso = peso;
         }
-        public void ContElectronica()
+        public override void AddProducto()
         {
+            base.AddProducto();
             Console.WriteLine("Tipo de Material");
             Material = Console.ReadLine();
             Console.WriteLine("Introduce Preso ");
@@ -29,7 +30,7 @@ namespace MquinaDeVending
         }
         public string SInfo()
         {
-            return $"Id: {Id}\n\t Nombre: {Nombre}\n\t Precio: {Precio}\n\t PrecioUnidad: {PrecioUnidad}\n\t Descripcion: {Descripcion}\n\t Material: {Material}\n\t Peso: {Peso} ";
+            return $"{base.SInfo()}\n\t Material: {Material}\n\t Peso: {Peso} ";
         }
         public override void ToFile()
         {
