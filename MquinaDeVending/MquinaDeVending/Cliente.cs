@@ -9,10 +9,7 @@ namespace MquinaDeVending
 {
     internal class Cliente
     {
-
         public Cliente() { }
-
-
         public void Menu()
         {
 

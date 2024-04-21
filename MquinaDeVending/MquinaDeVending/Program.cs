@@ -171,7 +171,7 @@ namespace MquinaDeVending
                             Console.WriteLine("Introduce el código de seguridad:");
                             int codigoSeguridad = int.Parse(Console.ReadLine());
 
-                            Pago_Tarjeta pagoTarjeta = new Pago_Tarjeta(numeroTarjeta, nombreTitular, fechaExpiracion, codigoSeguridad);
+                            Pago_Tarjeta pagoTarjeta = new Pago_Tarjeta();
                             pagoTarjeta.RealizarPago(producto.Precio);
                             break;
                         default:
