@@ -15,8 +15,8 @@ namespace MquinaDeVending
 
         public Product_Alimentos() { }
 
-        public Product_Alimentos(int id, string nombre, double precio, int preciounidad, string descripcion, int calorias, int grasa, int azucar)
-            : base(id, nombre, precio, preciounidad, descripcion)
+        public Product_Alimentos(int id, string nombre, double precio, int cantidad, string descripcion, int calorias, int grasa, int azucar)
+            : base(id, nombre, precio, cantidad, descripcion)
         {
             Calorias = calorias;
             Azucar = azucar;
@@ -38,7 +38,7 @@ namespace MquinaDeVending
         public override void ToFile()
         {
             StreamWriter sw = new StreamWriter("PAlimentos.txt", true);
-            sw.WriteLine($"{Id},{Nombre},{Precio},{PrecioUnidad},{Descripcion},{Calorias},{Grasa},{Azucar}");
+            sw.WriteLine($"{Id},{Nombre},{Precio},{Cantidad},{Descripcion},{Calorias},{Grasa},{Azucar}");
             sw.Close();
         }
 

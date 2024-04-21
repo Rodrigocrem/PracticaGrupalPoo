@@ -16,8 +16,8 @@ namespace MquinaDeVending
         public bool Precargado { get; set; }
 
         public Product_MaterialesPrecios() { }
-        public Product_MaterialesPrecios(int id, string nombre, double precio, int precioUnidad, string descripcion, string material, bool pilas, bool precargado)
-            : base(id, nombre, precio, precioUnidad, descripcion)
+        public Product_MaterialesPrecios(int id, string nombre, double precio, int cantidad, string descripcion, string material, bool pilas, bool precargado)
+            : base(id, nombre, precio, cantidad, descripcion)
         {
             Pilas = pilas;
             Precargado = precargado;
@@ -63,7 +63,7 @@ namespace MquinaDeVending
         public override void ToFile()
         {
             StreamWriter sw = new StreamWriter("PMPreciosos.txt", true);
-            sw.WriteLine($"{Id},{Nombre},{Precio},{PrecioUnidad},{Descripcion},{Material},{Precargado},{Material}");
+            sw.WriteLine($"{Id},{Nombre},{Precio},{Cantidad},{Descripcion},{Material},{Precargado},{Material}");
             sw.Close();
         }
 

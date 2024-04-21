@@ -12,24 +12,26 @@ namespace MquinaDeVending
         public int Id { get; set; }
         public string Nombre { get; set; }
         public double Precio { get; set; }
-        public int PrecioUnidad { get; set; }
+
+        public int Cantidad { get; set; }
         public string Descripcion { get; set; }
 
         public Product_General() { }
 
 
-        public Product_General(int id, string nombre, double precio, int preciounidad, string descripcion)
+        public Product_General(int id, string nombre, double precio, int cantidad, string descripcion)
         {
             Id = id;
             Nombre = nombre;
             Precio = precio;
-            PrecioUnidad = preciounidad;
+            Cantidad = cantidad;
             Descripcion = descripcion;
+
         }
 
         public virtual string SInfo()
         {
-            return $"Id: {Id}\n\t Nombre: {Nombre}\n\t Precio: {Precio}\n\t PrecioUnidad: {PrecioUnidad}\n\t Descripcion: {Descripcion}";
+            return $"Id: {Id}\n\t Nombre: {Nombre}\n\t Precio: {Precio}\n\t Cantidad: {Cantidad}\n\t Descripcion: {Descripcion}\n\t";
         }
         public virtual void AddProducto()
         {
@@ -41,7 +43,7 @@ namespace MquinaDeVending
             Console.WriteLine("Introduce Precio: ");
             Precio = double.Parse(Console.ReadLine());
             Console.WriteLine("¿Cuantas unidades desea?: ");
-            PrecioUnidad = int.Parse(Console.ReadLine());
+            Cantidad = int.Parse(Console.ReadLine());
             Console.WriteLine("Introduce Descripcion: ");
             Descripcion = Console.ReadLine();
 
