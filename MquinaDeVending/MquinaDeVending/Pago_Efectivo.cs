@@ -8,19 +8,40 @@ namespace MquinaDeVending
 {
     internal class Pago_Efectivo : Pago
     {
-        public override void RealizarPago(double cantidad)
+       public double Monto { get; set; }
+        public static double[] Coins = new double[]
         {
-            Console.WriteLine($"Pagando en efectivo: ${cantidad}");
-            //string dinero = GestionarPago(cantidad);
-            //Console.WriteLine("Monedas introducidas: " + dinero);
-
+           0.01,
+           0.02,
+           0.5,
+           0.10,
+           0.20,
+           0.50,
+           1.00,
+           2.00,
+           5.0,
+           10.0,
+           20.0,
+           50.0,
+           100.0,
+           200.0,
+           500.0
+,
+        };
+        public void PEfectivo(List<Product_General> Carrito)
+        {
+            foreach (Product_General p in Carrito)
+            {
+                Monto = Monto + p.PrecioUnidad;
+            }
+            do 
+            {
+                Monedas();
+                Console.
+            
+            
+            } while (true);
         }
 
-        //private string GestionarPago(double cantidad)
-        //{
-        //  int[] ValorDinero = { 20, 10, 5, 2, 1};
-        //int[] centimos = (int)(cantidad * 100); //Revisar esto. 
-        //StringBuilder monedasEntregadas = new StringBuilder();
-        //}
     }
 }
