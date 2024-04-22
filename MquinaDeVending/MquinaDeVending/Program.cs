@@ -119,7 +119,7 @@ namespace MquinaDeVending
                     d.AddProducto();
                     break;
                 case 3:
-                    Product_MaterialesPrecios f = new Product_MaterialesPrecios();
+                    Produc_MaterialesPreciosos f = new Produc_MaterialesPreciosos();
                     f.AddProducto();
                     break;
 

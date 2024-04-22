@@ -9,61 +9,35 @@ using System.Threading.Tasks;
 
 namespace MquinaDeVending
 {
-    internal class Product_MaterialesPrecios : Product_General
+    internal class Produc_MaterialesPreciosos : Product_General
     {
         public string Material { get; set; }
-        public bool Pilas { get; set; }
-        public bool Precargado { get; set; }
+        public int Peso { get; set; }
 
-        public Product_MaterialesPrecios() { }
-        public Product_MaterialesPrecios(int id, string nombre, double precio, int cantidad, string descripcion, string material, bool pilas, bool precargado)
-            : base(id, nombre, precio, cantidad, descripcion)
+        public Produc_MaterialesPreciosos() { }
+
+        public Produc_MaterialesPreciosos(int id, string nombre, double precio, int cantidad, string descripcion, string material, int peso)
+         : base(id, nombre, precio, cantidad, descripcion)
         {
-            Pilas = pilas;
-            Precargado = precargado;
             Material = material;
-
+            Peso = peso;
         }
-        public void ContMPreciosos()
+        public override void AddProducto()
         {
-            Thread.Sleep(1000);
-            int TPilas;
-
-            //REVISAR
-            Console.WriteLine("Introduce Material: ");
+            base.AddProducto();
+            Console.WriteLine("Tipo de Material");
             Material = Console.ReadLine();
-
-            Console.WriteLine("Incluye Pilas (Sí=0/No=1): ");
-            TPilas = int.Parse(Console.ReadLine());
-
-            if (TPilas == 0)
-            {
-                Pilas = true;
-            }
-            else
-            {
-                Pilas = false;
-            }
-            Console.WriteLine("Precargado (Sí=0/No=1): ");
-            if (TPilas == 0)
-            {
-                Precargado = true;
-            }
-            else
-            {
-                Precargado = false;
-            }
-
+            Console.WriteLine("Introduce Peso ");
+            Peso = int.Parse(Console.ReadLine());
         }
         public override string SInfo()
         {
-            return $"{base.SInfo()}\n\t Material: {Material}\n\t Pilas: {Pilas} Precargado: {Precargado}";
+            return $"{base.SInfo()}\n\t Material: {Material}\n\t Peso: {Peso} ";
         }
-
         public override void ToFile()
         {
-            StreamWriter sw = new StreamWriter("PMPreciosos.txt", true);
-            sw.WriteLine($"{Id},{Nombre},{Precio},{Cantidad},{Descripcion},{Material},{Precargado},{Material}");
+            StreamWriter sw = new StreamWriter("PElectronicos.txt", true);
+            sw.WriteLine($"{Id}{Nombre} {Precio} {Cantidad} {Descripcion} {Material} {Peso}");
             sw.Close();
         }
 

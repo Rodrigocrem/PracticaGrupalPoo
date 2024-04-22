@@ -53,7 +53,7 @@ namespace MquinaDeVending
                     break;
 
                 case 3:
-                    Product_MaterialesPrecios product_MaterialesPrecios = new Product_MaterialesPrecios();
+                    Produc_MaterialesPreciosos product_MaterialesPrecios = new Produc_MaterialesPreciosos();
                     product_MaterialesPrecios.AddProducto();
                     ListaProductos.Add(product_MaterialesPrecios);
                     break;
@@ -89,9 +89,11 @@ namespace MquinaDeVending
         public void CargarProductosFichero()
         { 
             FileStream fs = new FileStream($"example_vending_file_practical_work_i.csv",FileMode.Open,FileAccess.Read); //Abrimos el fichero. 
+            int id = 0;
             StreamReader streamReader = new StreamReader(fs);
             while (streamReader.Peek() != -1)
             {
+                id++;
                 string line = streamReader.ReadLine();
                 string[] parts = line.Split(';');
                 int product_type = int.Parse(parts[0]);
@@ -105,7 +107,12 @@ namespace MquinaDeVending
                 string has_battery = parts[8];
                 string charged_by_default = parts[9];
 
+                switch (product_type)
+                {
+                    case 1: Produc_MaterialesPreciosos product_MaterialesPrecios = new Product_MaterialesPrecios(id, product_name,product_unit_prize,product_units,product_description, product_type);
 
+
+                }
 
 
 

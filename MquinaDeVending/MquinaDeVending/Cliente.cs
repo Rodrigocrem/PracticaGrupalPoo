@@ -28,7 +28,7 @@ namespace MquinaDeVending
                     Console.ReadKey();
 
                 }
-                else if (p is Product_MaterialesPrecios)
+                else if (p is Produc_MaterialesPreciosos)
                 {
                     Console.WriteLine(p.SInfo());
                     Console.ReadKey();
