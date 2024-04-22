@@ -13,7 +13,7 @@ namespace MquinaDeVending
     {
         static void PlaySound(string soundFile)
         {
-            try
+            /*try
             {
                 string filePath = Path.Combine(Environment.CurrentDirectory, soundFile);
                 SoundPlayer player = new SoundPlayer(filePath);
@@ -22,7 +22,7 @@ namespace MquinaDeVending
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al reproducir el sonido: {ex.Message}");
-            }
+            }*/
         }
 
 
