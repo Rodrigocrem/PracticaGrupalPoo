@@ -81,14 +81,14 @@ namespace MquinaDeVending
                         break;
 
                     default:
-                        Console.WriteLine("Tu eres tonto? (jose manuel)");
+                        Console.WriteLine("ERROR");
                         Console.ReadKey();
                         break;
                 }
             } while (opcion != 5);
             if (opcion == 5)
             {
-                Console.WriteLine("Gracias por todo gilipollas :)");
+                Console.WriteLine("Gracias por todo");
                 Console.ReadKey();
             }
         }
