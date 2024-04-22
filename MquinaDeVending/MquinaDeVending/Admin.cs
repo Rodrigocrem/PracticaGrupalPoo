@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,6 +13,7 @@ namespace MquinaDeVending
         public string NickName { get; set; }
         public string Password { get; set; }
 
+        
         public Admin() { }
 
         public Admin(string nickName, string password)
@@ -83,6 +85,36 @@ namespace MquinaDeVending
 
 
         }
+
+        public void CargarProductosFichero()
+        { 
+            FileStream fs = new FileStream($"example_vending_file_practical_work_i.csv",FileMode.Open,FileAccess.Read); //Abrimos el fichero. 
+            StreamReader streamReader = new StreamReader(fs);
+            while (streamReader.Peek() != -1)
+            {
+                string line = streamReader.ReadLine();
+                string[] parts = line.Split(';');
+                int product_type = int.Parse(parts[0]);
+                string product_name = parts[1];
+                int product_units = int.Parse(parts[2]);
+                double product_unit_prize = double.Parse(parts[3]);
+                string product_description = parts[4];
+                string materials = parts[5];
+                int weight = int.Parse(parts[6]);
+                string nutritional_information = parts[7];
+                string has_battery = parts[8];
+                string charged_by_default = parts[9];
+
+
+
+
+
+
+
+
+            }
+        }
+
 
     }
 }
