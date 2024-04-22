@@ -142,16 +142,25 @@ namespace MquinaDeVending
         {
             bool productoEncontrado = false;
             int opcion = 0;
+
             bool pago = false;
             double preciocarrito = 0;
+            List<Product_General> listaproductos2 = new List<Product_General>();
+
+            foreach (Product_General producto in listaproductos)
+            {
+
+                listaproductos2.Add(producto);
+            }
+
             do
             {
                 Console.Clear();
                 productoEncontrado = false;
-                if (listaproductos.Count != 0)
+                if (listaproductos2.Count != 0)
                 {
                     //Muestra la informacion de todos los productos para que el cliente elija el id a comprar
-                    foreach (Product_General prod2 in listaproductos)
+                    foreach (Product_General prod2 in listaproductos2)
                     {
                         Console.WriteLine(prod2.SInfo());
                     }
@@ -159,7 +168,7 @@ namespace MquinaDeVending
                     Console.WriteLine("Introduce el Id del producto a comprar: ");
                     int Idproducto = int.Parse(Console.ReadLine());
 
-                    foreach (Product_General producto in listaproductos)
+                    foreach (Product_General producto in listaproductos2)
                     {
                         if (producto.Id == Idproducto)
                         {
@@ -169,89 +178,151 @@ namespace MquinaDeVending
                             // Mostramos información del producto.
                             Console.WriteLine("Producto seleccionado: ");
                             Console.WriteLine(producto.SInfo());
-
-                            //Preguntamos si desea introducir otro id
-                            Console.WriteLine("Desea seguir comprando");
-                            Console.WriteLine("1- Si, desea añadir mas productos");
-                            Console.WriteLine("2- No, pasar a proceso de pago");
-                            Console.WriteLine("3- Cancela compra");
-                            opcion = int.Parse(Console.ReadLine());
-
-                            switch (opcion)
+                            producto.Cantidad--;
+                            if (producto.Cantidad == 0)
                             {
-                                case 1:
-                                    break;
-                                case 2:
-                                    // Gestionamos la opción de pago.
-                                    Console.WriteLine("Seleccione método de pago:");
-                                    Console.WriteLine("1 - Efectivo");
-                                    Console.WriteLine("2 - Tarjeta");
-                                    int OpcionPago = int.Parse(Console.ReadLine());
-                                    foreach (Product_General carrito in Carrito)
-                                    {
-                                        preciocarrito += carrito.Precio;
-                                    }
-                                    switch (OpcionPago)
-                                    {
-                                        case 1:
-                                            Pago_Efectivo pagoEfectivo = new Pago_Efectivo();
-                                            pago = pagoEfectivo.RealizarPago(preciocarrito);
-                                            if (pago == true)
-                                            {
-
-                                                foreach (Product_General productocarrito in listaproductos)
-                                                {
-                                                    foreach (Product_General carrito in Carrito)
-                                                    {
-                                                        if (carrito == producto)
-                                                        {
-                                                            productocarrito.Cantidad--;
-                                                        }
-                                                    }
-                                                    if (productocarrito.Cantidad == 0)
-                                                    {
-                                                        listaproductos.Remove(producto);
-                                                    }
-                                                }
-
-                                            }
-                                            break;
-                                        case 2:
-                                            Pago_Tarjeta pagoTarjeta = new Pago_Tarjeta();
-                                            pago = pagoTarjeta.RealizarPago(preciocarrito);
-                                            foreach (Product_General productocarrito in listaproductos)
-                                            {
-                                                foreach (Product_General carrito in Carrito)
-                                                {
-                                                    if (carrito == producto)
-                                                    {
-                                                        productocarrito.Cantidad--;
-                                                    }
-                                                }
-                                                if (productocarrito.Cantidad == 0)
-                                                {
-                                                    listaproductos.Remove(producto);
-                                                }
-                                            }
-                                            break;
-                                        default:
-                                            Console.WriteLine("Opción de pago no válida.");
-                                            break;
-                                    }
-                                    break;
-                                case 3:
-                                    break;
-                                default:
-                                    Console.WriteLine("Opcion no valida");
-                                    break;
-
+                                listaproductos2.Remove(producto);
                             }
+
+                            if (listaproductos2.Count != 0)
+                            {
+                                //Preguntamos si desea introducir otro id
+                                Console.WriteLine("Desea seguir comprando");
+                                Console.WriteLine("1- Si, deseo añadir mas productos");
+                                Console.WriteLine("2- No, pasar a proceso de pago");
+                                Console.WriteLine("3- Cancela compra");
+                                opcion = int.Parse(Console.ReadLine());
+
+                                switch (opcion)
+                                {
+                                    case 1:
+
+                                        break;
+                                    case 2:
+                                        // Gestionamos la opción de pago.
+                                        Console.WriteLine("Seleccione método de pago:");
+                                        Console.WriteLine("1 - Efectivo");
+                                        Console.WriteLine("2 - Tarjeta");
+                                        Console.WriteLine("3 - Cancelar");
+                                        int OpcionPago = int.Parse(Console.ReadLine());
+                                        foreach (Product_General carrito in Carrito)
+                                        {
+                                            preciocarrito += carrito.Precio;
+                                        }
+                                        switch (OpcionPago)
+                                        {
+                                            case 1:
+                                                Pago_Efectivo pagoEfectivo = new Pago_Efectivo();
+                                                pago = pagoEfectivo.RealizarPago(preciocarrito);
+                                                if (pago == true)
+                                                {
+
+                                                    listaproductos.Clear();
+                                                    foreach (Product_General productonuev in listaproductos2)
+                                                    {
+                                                        listaproductos.Add(productonuev);
+                                                    }
+
+                                                }
+                                                return;
+                                            case 2:
+                                                Pago_Tarjeta pagoTarjeta = new Pago_Tarjeta();
+                                                pago = pagoTarjeta.RealizarPago(preciocarrito);
+                                                listaproductos.Clear();
+                                                foreach (Product_General productonuev in listaproductos2)
+                                                {
+                                                    listaproductos.Add(productonuev);
+                                                }
+                                                return;
+                                            case 3: //Cancelacion de compra
+                                                opcion = 3;
+                                                Carrito.Clear();
+                                                listaproductos2.Clear();
+                                                foreach (Product_General producto1 in listaproductos)
+                                                {
+                                                    Console.WriteLine(producto1.Cantidad);
+                                                    Console.ReadKey();
+                                                }
+                                                return;
+                                            default:
+                                                Console.WriteLine("Opción de pago no válida.");
+                                                break;
+                                        }
+                                        break;
+                                    case 3: //Cancelacion de compra                                       
+                                        opcion = 3;
+                                        Carrito.Clear();
+                                        listaproductos2.Clear();
+                                        foreach (Product_General producto1 in listaproductos)
+                                        {
+                                            Console.WriteLine(producto1.Cantidad);
+                                            Console.ReadKey();
+                                        }
+                                        return;
+                                    default:
+                                        Console.WriteLine("Opcion no valida");
+                                        break;
+
+                                }
+                            }
+                            else //Le llevamos directamente al pago si no hay mas productos para comprar
+                            {
+                                // Gestionamos la opción de pago.
+                                Console.WriteLine("Seleccione método de pago:");
+                                Console.WriteLine("1 - Efectivo");
+                                Console.WriteLine("2 - Tarjeta");
+                                Console.WriteLine("3 - Cancelar");
+                                int OpcionPago = int.Parse(Console.ReadLine());
+                                foreach (Product_General carrito in Carrito)
+                                {
+                                    preciocarrito += carrito.Precio;
+                                }
+                                switch (OpcionPago)
+                                {
+                                    case 1:
+                                        Pago_Efectivo pagoEfectivo = new Pago_Efectivo();
+                                        pago = pagoEfectivo.RealizarPago(preciocarrito);
+                                        if (pago == true)
+                                        {
+                                            listaproductos.Clear();
+                                            foreach (Product_General productonuev in listaproductos2)
+                                            {
+                                                listaproductos.Add(productonuev);
+                                            }
+                                        }
+                                        return;
+                                    case 2:
+                                        Pago_Tarjeta pagoTarjeta = new Pago_Tarjeta();
+                                        pago = pagoTarjeta.RealizarPago(preciocarrito);
+                                        listaproductos.Clear();
+                                        foreach (Product_General productonuev in listaproductos2)
+                                        {
+                                            listaproductos.Add(productonuev);
+                                        }
+                                        return;
+                                    case 3: //Cancelacion de compra
+                                        opcion = 3;
+                                        Carrito.Clear();
+                                        listaproductos2.Clear();
+                                        foreach (Product_General producto1 in listaproductos)
+                                        {
+                                            Console.WriteLine(producto1.Cantidad);
+                                            Console.ReadKey();
+                                        }
+                                        return;
+                                    default:
+                                        Console.WriteLine("Opción de pago no válida.");
+                                        break;
+                                }
+                            }
+
                         }
                     }
 
                     if (!productoEncontrado)
                     {
                         Console.WriteLine("Ha introducido un ID erróneo. Vuelva a intentarlo.");
+                        Console.ReadKey();
                     }
                 }
                 else
@@ -263,10 +334,10 @@ namespace MquinaDeVending
                 }
 
             } while (opcion != 3);
+
             Carrito.Clear();
 
         }
-
 
 
 
