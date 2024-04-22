@@ -101,16 +101,21 @@ namespace MquinaDeVending
                 int product_units = int.Parse(parts[2]);
                 double product_unit_prize = double.Parse(parts[3]);
                 string product_description = parts[4];
-                string materials = parts[5];
-                int weight = int.Parse(parts[6]);
+                string Materiales = parts[5];
+                int Peso = int.Parse(parts[6]);
                 string nutritional_information = parts[7];
-                string has_battery = parts[8];
-                string charged_by_default = parts[9];
+                bool has_battery = bool.Parse(parts[8]);
+                bool charged_by_default = bool.Parse(parts[9]);
+                
 
                 switch (product_type)
                 {
-                    case 1: Produc_MaterialesPreciosos product_MaterialesPrecios = new Product_MaterialesPrecios(id, product_name,product_unit_prize,product_units,product_description, product_type);
-
+                    case 1: Produc_MaterialesPreciosos product_MaterialesPreciosos = new Produc_MaterialesPreciosos(id, product_name,product_unit_prize,product_units,product_description,Materiales,Peso);
+                        break;
+                    case 2: Product_Alimentos product_Alimentos = new Product_Alimentos(id, product_name, product_unit_prize, product_units, product_description, nutritional_information);
+                        break;
+                    case 3: Product_Electronica product_Electronica = new Product_Electronica(id, product_name, product_unit_prize, product_units, product_description, Materiales, has_battery, charged_by_default);
+                        break;
 
                 }
 
