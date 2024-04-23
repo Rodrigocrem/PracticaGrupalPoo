@@ -49,6 +49,8 @@ namespace MquinaDeVending
 
         }
 
+        public abstract Product_General Copiar();
+
         public abstract void ToFile();
 
     }

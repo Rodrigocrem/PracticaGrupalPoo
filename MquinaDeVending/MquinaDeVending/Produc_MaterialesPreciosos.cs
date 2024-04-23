@@ -40,6 +40,18 @@ namespace MquinaDeVending
             sw.WriteLine($"{Id}{Nombre} {Precio} {Cantidad} {Descripcion} {Material} {Peso}");
             sw.Close();
         }
+        public override Product_General Copiar()
+        {
+            int id = Id;
+            string nombre = Nombre;
+            double precio = Precio;
+            int cantidad = Cantidad;
+            string descripcion = Descripcion;
+            string material = Material;
+            int peso = Peso;
+            Produc_MaterialesPreciosos product = new Produc_MaterialesPreciosos(Id, Nombre, Precio, Cantidad, Descripcion, Material, Peso);
+            return product;
+        }
 
     }
 

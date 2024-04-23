@@ -9,7 +9,7 @@ namespace MquinaDeVending
 {
     internal class Product_Alimentos : Product_General
     {
-       public string InformacionNutricional { get; set; }
+        public string InformacionNutricional { get; set; }
 
         public Product_Alimentos() { }
 
@@ -17,6 +17,12 @@ namespace MquinaDeVending
             : base(id, nombre, precio, cantidad, descripcion)
         {
             InformacionNutricional = informacionnutricional;
+        }
+        public override void AddProducto()
+        {
+            base.AddProducto();
+            Console.WriteLine("Introduce informacion nutricional: ");
+            InformacionNutricional = Console.ReadLine();
         }
         public void ContAlimentacion()
         {
@@ -33,7 +39,17 @@ namespace MquinaDeVending
             sw.WriteLine($"{Id},{Nombre},{Precio},{Cantidad},{Descripcion},{InformacionNutricional}");
             sw.Close();
         }
-
+        public override Product_General Copiar()
+        {
+            int id = Id;
+            string nombre = Nombre;
+            double precio = Precio;
+            int cantidad = Cantidad;
+            string descripcion = Descripcion;
+            string infonutricional = InformacionNutricional;
+            Product_Alimentos product = new Product_Alimentos(Id, Nombre, Precio, Cantidad, Descripcion, InformacionNutricional);
+            return product;
+        }
     }
 
 

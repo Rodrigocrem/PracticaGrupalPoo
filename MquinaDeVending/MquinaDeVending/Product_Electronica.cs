@@ -23,6 +23,37 @@ namespace MquinaDeVending
             Material = material;
 
         }
+        public override void AddProducto()
+        {
+            base.AddProducto();
+            int TPilas;
+
+            Console.WriteLine("Introduce Material: ");
+            Material = Console.ReadLine();
+
+            Console.WriteLine("Incluye Pilas (Sí=0/No=1): ");
+            TPilas = int.Parse(Console.ReadLine());
+
+            if (TPilas == 0)
+            {
+                Pilas = true;
+            }
+            else
+            {
+                Pilas = false;
+            }
+            Console.WriteLine("Precargado (Sí=0/No=1): ");
+            TPilas = int.Parse(Console.ReadLine());
+            if (TPilas == 0)
+            {
+                Precargado = true;
+            }
+            else
+            {
+                Precargado = false;
+            }
+
+        }
         public void ContMPreciosos()
         {
             Thread.Sleep(1000);
@@ -64,6 +95,20 @@ namespace MquinaDeVending
             StreamWriter sw = new StreamWriter("PMPreciosos.txt", true);
             sw.WriteLine($"{Id},{Nombre},{Precio},{Cantidad},{Descripcion},{Material},{Precargado},{Material}");
             sw.Close();
+        }
+
+        public override Product_General Copiar()
+        {
+            int id = Id;
+            string nombre = Nombre;
+            double precio = Precio;
+            int cantidad = Cantidad;
+            string descripcion = Descripcion;
+            string material = Material;
+            bool pilas = Pilas;
+            bool precargado = Precargado;
+            Product_Electronica product = new Product_Electronica(Id, Nombre, Precio, Cantidad, Descripcion, Material, Pilas, Precargado);
+            return product;
         }
 
 

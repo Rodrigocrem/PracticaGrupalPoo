@@ -146,11 +146,27 @@ namespace MquinaDeVending
             bool pago = false;
             double preciocarrito = 0;
             List<Product_General> listaproductos2 = new List<Product_General>();
-
+            //Copiamos los productos en otra lista para no modificar la original en caso de cancelacion
             foreach (Product_General producto in listaproductos)
             {
-
-                listaproductos2.Add(producto);
+                if (producto is Product_Electronica)
+                {
+                    Product_Electronica productoCopia = new Product_Electronica();
+                    productoCopia = (Product_Electronica)producto.Copiar();
+                    listaproductos2.Add(productoCopia);
+                }
+                if (producto is Product_Alimentos)
+                {
+                    Product_Alimentos productoCopia = new Product_Alimentos();
+                    productoCopia = (Product_Alimentos)producto.Copiar();
+                    listaproductos2.Add(productoCopia);
+                }
+                if (producto is Produc_MaterialesPreciosos)
+                {
+                    Produc_MaterialesPreciosos productoCopia = new Produc_MaterialesPreciosos();
+                    productoCopia = (Produc_MaterialesPreciosos)producto.Copiar();
+                    listaproductos2.Add(productoCopia);
+                }
             }
 
             do

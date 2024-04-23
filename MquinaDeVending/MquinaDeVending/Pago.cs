@@ -8,12 +8,12 @@ namespace MquinaDeVending
 {
     internal class Pago
     {
-      
-       public virtual bool RealizarPago(double cantidad)
-       {
-           return false;
 
-       }
+        public virtual bool RealizarPago(double cantidad)
+        {
+            return false;
+
+        }
 
     }
 }

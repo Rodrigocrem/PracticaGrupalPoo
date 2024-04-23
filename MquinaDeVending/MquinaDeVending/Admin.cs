@@ -13,7 +13,7 @@ namespace MquinaDeVending
         public string NickName { get; set; }
         public string Password { get; set; }
 
-        
+
         public Admin() { }
 
         public Admin(string nickName, string password)
@@ -87,8 +87,8 @@ namespace MquinaDeVending
         }
 
         public void CargarProductosFichero()
-        { 
-            FileStream fs = new FileStream($"example_vending_file_practical_work_i.csv",FileMode.Open,FileAccess.Read); //Abrimos el fichero. 
+        {
+            FileStream fs = new FileStream($"example_vending_file_practical_work_i.csv", FileMode.Open, FileAccess.Read); //Abrimos el fichero. 
             int id = 0;
             StreamReader streamReader = new StreamReader(fs);
             while (streamReader.Peek() != -1)
@@ -106,15 +106,18 @@ namespace MquinaDeVending
                 string nutritional_information = parts[7];
                 bool has_battery = bool.Parse(parts[8]);
                 bool charged_by_default = bool.Parse(parts[9]);
-                
+
 
                 switch (product_type)
                 {
-                    case 1: Produc_MaterialesPreciosos product_MaterialesPreciosos = new Produc_MaterialesPreciosos(id, product_name,product_unit_prize,product_units,product_description,Materiales,Peso);
+                    case 1:
+                        Produc_MaterialesPreciosos product_MaterialesPreciosos = new Produc_MaterialesPreciosos(id, product_name, product_unit_prize, product_units, product_description, Materiales, Peso);
                         break;
-                    case 2: Product_Alimentos product_Alimentos = new Product_Alimentos(id, product_name, product_unit_prize, product_units, product_description, nutritional_information);
+                    case 2:
+                        Product_Alimentos product_Alimentos = new Product_Alimentos(id, product_name, product_unit_prize, product_units, product_description, nutritional_information);
                         break;
-                    case 3: Product_Electronica product_Electronica = new Product_Electronica(id, product_name, product_unit_prize, product_units, product_description, Materiales, has_battery, charged_by_default);
+                    case 3:
+                        Product_Electronica product_Electronica = new Product_Electronica(id, product_name, product_unit_prize, product_units, product_description, Materiales, has_battery, charged_by_default);
                         break;
 
                 }
