@@ -25,7 +25,7 @@ namespace MquinaDeVending
             Console.WriteLine("Cuanto saldo dispone:");
             double saldo = double.Parse(Console.ReadLine());
 
-            if (Saldo >= Monto)
+            if (Saldo >= cantidad)
             {
                 Console.WriteLine("Compra realizada correctamente.");
                 return true;
