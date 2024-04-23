@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MquinaDeVending.Cliente">
+    <Position X="11.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Cliente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MquinaDeVending.Admin">
+    <Position X="9.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAgAAABAAAgAAAAAAAIAAECAAEAAAAAAEA=</HashCode>
+      <FileName>Admin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MquinaDeVending.Pago">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Pago.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MquinaDeVending.Pago_Efectivo">
+    <Position X="4.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAIAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Pago_Efectivo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MquinaDeVending.Pago_Tarjeta">
+    <Position X="6.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAIAAAAgAIAAAAAAAA=</HashCode>
+      <FileName>Pago_Tarjeta.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MquinaDeVending.Produc_MaterialesPreciosos">
+    <Position X="4.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAACAAAAAIQ=</HashCode>
+      <FileName>Produc_MaterialesPreciosos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MquinaDeVending.Product_Alimentos">
+    <Position X="1.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAgAAAAAAAAEAAAAACAAAAAIQ=</HashCode>
+      <FileName>Product_Alimentos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MquinaDeVending.Product_Electronica">
+    <Position X="7.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEACAAAAAgAAAAAAAAAAABAAAAAAAEAAAAACAAAAAIQ=</HashCode>
+      <FileName>Product_Electronica.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MquinaDeVending.Product_General">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAEAAAAAAAAAAAAAgAARAAAAAEAAAAACAAAAAIQ=</HashCode>
+      <FileName>Product_General.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MquinaDeVending.Program">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAgAAAAAAAAAQAAAAAAAAAAAAAAAIAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
