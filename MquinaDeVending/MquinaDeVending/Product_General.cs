@@ -33,17 +33,28 @@ namespace MquinaDeVending
         {
             return $"Id: {Id}\n\t Nombre: {Nombre}\n\t Precio: {Precio}\n\t Cantidad: {Cantidad}\n\t Descripcion: {Descripcion}\n\t";
         }
-        public virtual void AddProducto()
+        public virtual void AddProducto(ref List<Product_General> ListaProductos)
         {
-
+           
+            int cantidades = 0;
+            int cant1 = 0;
             Console.WriteLine("Introduce Id: ");
             Id = int.Parse(Console.ReadLine());
             Console.WriteLine("Introduce Nombre: ");
             Nombre = Console.ReadLine();
-            Console.WriteLine("Introduce Precio: ");
+            Console.WriteLine("Introduce Precio (Euros): ");
             Precio = double.Parse(Console.ReadLine());
-            Console.WriteLine("¿Cuantas unidades desea?: ");
-            Cantidad = int.Parse(Console.ReadLine());
+            do
+            {
+                Console.WriteLine("¿Cuantas unidades desea?: ");
+                cant1 = int.Parse(Console.ReadLine());
+                foreach(Product_General produc in ListaProductos)
+                {
+                    cantidades += produc.Cantidad;
+                }
+                cantidades += cant1;
+            } while (cantidades > 12);
+            Cantidad = cantidades;
             Console.WriteLine("Introduce Descripcion: ");
             Descripcion = Console.ReadLine();
 

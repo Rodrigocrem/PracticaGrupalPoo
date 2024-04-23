@@ -22,46 +22,124 @@ namespace MquinaDeVending
             Password = password;
         }
 
-        public void Menu()
+        public void Menu(ref List<Product_General> ListaProductos)
         {
-
-        }
-        public void AñadirContenido(ref List<Product_General> ListaProductos)
-        {
-
-            int opcion = 0;
-            Console.Clear();
-            Console.WriteLine("¿Que desea hacer?");
-            Console.WriteLine("1. Añadir producto electronico. ");
-            Console.WriteLine("2. Añadir producto alimenticio");
-            Console.WriteLine("3. Añadir producto material precioso");
-            Console.WriteLine(" Introduzca opcion: ");
-
+            int opcion;
+            Console.WriteLine("1-Agregar un tipo de producto a la maquina");
+            Console.WriteLine("2-Eliminar un tipo de producto de la maquina");
+            Console.WriteLine("3-Eliminar una unidad de un tipo de producto");
+            Console.WriteLine("4-Agregar una unidad a un tipo de producto");
             opcion = int.Parse(Console.ReadLine());
-            switch (opcion)
-            {
+            switch(opcion){
+
                 case 1:
-                    Product_Electronica product_Electronica = new Product_Electronica();
-                    product_Electronica.AddProducto();
-                    ListaProductos.Add(product_Electronica);
-                    break;
+                    AñadirContenido(ref ListaProductos);
+                break;
 
                 case 2:
-                    Product_Alimentos product_Alimentos = new Product_Alimentos();
-                    product_Alimentos.AddProducto();
-                    ListaProductos.Add(product_Alimentos);
-                    break;
+                    EliminarUnProducto(ref ListaProductos);
+                break;  
 
                 case 3:
-                    Produc_MaterialesPreciosos product_MaterialesPrecios = new Produc_MaterialesPreciosos();
-                    product_MaterialesPrecios.AddProducto();
-                    ListaProductos.Add(product_MaterialesPrecios);
-                    break;
 
+                break;
+
+                case 4:
+                    int ComprobacionUds = ComprobarCantidad(ListaProductos);
+                    if(ComprobacionUds < 12){
+                        AgregarUnidad(ref ListaProductos);
+                    }else{
+                        Console.WriteLine("La maquina esta llena, lo siento");
+                    }
+                break;
 
                 default:
+                    Console.WriteLine("Opcion introducida incorrecta, pulsa una tecla para continuar");
+                    Console.ReadKey();
+                break;
+            }
 
-                    break;
+            
+        }
+
+        public void AgregarUnidad(ref List<Product_General> ListaProductos){
+            int UdsAdd;
+            int cantidadTotal;
+            Console.WriteLine("Introduce el Id del producto del que quieres agregar una unidad: ");
+            int idAgrego = int.Parse(Console.ReadLine());
+            foreach(Product_General p in ListaProductos){
+                if(p.Id == idAgrego){
+
+                    do{
+                        Console.WriteLine("Introduce el numero de unidades que quieres agregar");
+                        UdsAdd = int.Parse(Console.ReadLine());
+                        cantidadTotal = ComprobarCantidad(ListaProductos);
+                        if(UdsAdd + cantidadTotal >12){
+                            Console.WriteLine("Lo siento, no podemos agregar esa cantidad a la maquina, no entrarian los productos!!!");
+                        }else{
+                            Console.WriteLine("Unidades agregadas con exito");
+                        }
+                    }while(UdsAdd + cantidadTotal >12);
+
+                }
+            }
+        }
+
+        public int ComprobarCantidad(List<Product_General> ListaProductos)
+        {
+            int cantidades = 0;
+            foreach(Product_General produc in ListaProductos)
+                {
+                cantidades += produc.Cantidad;
+            }
+            return cantidades;
+        }
+
+        public void AñadirContenido(ref List<Product_General> ListaProductos)
+        {
+            int cantidades=0;
+            cantidades=ComprobarCantidad(ListaProductos);
+
+            if(cantidades<12)
+            {
+                int opcion = 0;
+                Console.Clear();
+                Console.WriteLine("¿Que desea hacer?");
+                Console.WriteLine("1. Añadir producto electronico. ");
+                Console.WriteLine("2. Añadir producto alimenticio");
+                Console.WriteLine("3. Añadir producto material precioso");
+                Console.WriteLine(" Introduzca opcion: ");
+
+                opcion = int.Parse(Console.ReadLine());
+                switch (opcion)
+                {
+                    case 1:
+                        Product_Electronica product_Electronica = new Product_Electronica();
+                        product_Electronica.AddProducto(ref ListaProductos);
+                        ListaProductos.Add(product_Electronica);
+                        break;
+
+                    case 2:
+                        Product_Alimentos product_Alimentos = new Product_Alimentos();
+                        product_Alimentos.AddProducto(ref ListaProductos);
+                        ListaProductos.Add(product_Alimentos);
+                        break;
+
+                    case 3:
+                        Produc_MaterialesPreciosos product_MaterialesPrecios = new Produc_MaterialesPreciosos();
+                        product_MaterialesPrecios.AddProducto(ref ListaProductos);
+                        ListaProductos.Add(product_MaterialesPrecios);
+                        break;
+
+
+                    default:
+
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Maquina llena, no se pueden añadir mas productos");
             }
             Console.WriteLine("Pulse una tecla para continuar: ");
             Console.ReadKey();
@@ -128,6 +206,20 @@ namespace MquinaDeVending
 
 
 
+            }
+        }
+        public void EliminarUnProducto(ref List<Product_General> ListaProductos)
+        {
+            int id = 0;
+            Console.WriteLine("Introduce el id del producto que quieres eliminar: ");
+            id = int.Parse(Console.ReadLine());
+            foreach (Product_General produc in ListaProductos)
+            {
+                if (produc.Id == id)
+                {
+                    ListaProductos.Remove(produc);
+                    break;
+                }
             }
         }
 

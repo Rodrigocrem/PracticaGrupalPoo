@@ -36,7 +36,7 @@ namespace MquinaDeVending
                 Console.WriteLine("║  4 | Cargar productos a tope               ║");
                 Console.WriteLine("║  5 | Salir                                 ║");
                 Console.WriteLine("╚════════════════════════════════════════════╝");
-                opcion = int.Parse(Console.ReadLine());
+                opcion = int.Parse(Console.ReadLine()); //Implementar una excepcion aqui. 
                 Console.Clear();
                 switch (opcion)
                 {
@@ -53,7 +53,7 @@ namespace MquinaDeVending
                         if (Respusta == true)
                         {
                             Console.WriteLine("Contraseña correcta !!!!");
-                            admin.AñadirContenido(ref listaproductos);
+                            admin.Menu(ref listaproductos);
 
                         }
                         else if (Respusta == false)
@@ -92,40 +92,7 @@ namespace MquinaDeVending
                 Console.WriteLine("Gracias por todo");
                 Console.ReadKey();
             }
-        }
-        public static void AContIndividual()
-        {
-
-        }
-
-        public static void AñadirContenido()
-        {
-            int opcion = 0;
-            Console.Clear();
-            Console.WriteLine("¿Que desea comprar?: ");
-            Console.WriteLine("1. Producto Electronico. ");
-            Console.WriteLine("2. Producto Alimenticio");
-            Console.WriteLine("3. Producto Material Precioso");
-            Console.WriteLine(" Introduzca opcion: ");
-            opcion = int.Parse(Console.ReadLine());
-            switch (opcion)
-            {
-                case 1:
-                    Product_Electronica p = new Product_Electronica();
-                    p.AddProducto();
-                    break;
-                case 2:
-                    Product_Alimentos d = new Product_Alimentos();
-                    d.AddProducto();
-                    break;
-                case 3:
-                    Produc_MaterialesPreciosos f = new Produc_MaterialesPreciosos();
-                    f.AddProducto();
-                    break;
-
-            }
-
-        }
+        }        
 
         static void Salir()
         {
@@ -182,7 +149,7 @@ namespace MquinaDeVending
                     }
 
                     Console.WriteLine("Introduce el Id del producto a comprar: ");
-                    int Idproducto = int.Parse(Console.ReadLine());
+                    int Idproducto = int.Parse(Console.ReadLine());   ///Hacer un try catch here 
 
                     foreach (Product_General producto in listaproductos2)
                     {

@@ -28,12 +28,14 @@ namespace MquinaDeVending
             if (Saldo >= cantidad)
             {
                 Console.WriteLine("Compra realizada correctamente.");
+                Console.ReadKey();
                 return true;
 
             }
             else
             {
                 Console.WriteLine("Saldo Insuficiente");
+                Console.ReadKey();
                 return false;
             }
         }

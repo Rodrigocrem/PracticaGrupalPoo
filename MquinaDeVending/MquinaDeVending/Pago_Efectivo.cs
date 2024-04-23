@@ -112,14 +112,11 @@ namespace MquinaDeVending
                 }
                 if (Monto == cantidad || Monto > cantidad)
                 {
-                    coste = true;
-                    return true;
-                                        
-                }
-                if (Monto>cantidad)
-                {
                     Monto = Monto - cantidad;
                     Console.WriteLine($"Cantidad devuelta: {Monto}");
+                    Console.ReadKey();
+                    coste = true;
+                    return true;               
                 }
             } while (coste == false);
             return false;

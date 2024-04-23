@@ -18,9 +18,9 @@ namespace MquinaDeVending
         {
             InformacionNutricional = informacionnutricional;
         }
-        public override void AddProducto()
+        public override void AddProducto(ref List<Product_General> ListaProductos)
         {
-            base.AddProducto();
+            base.AddProducto(ref ListaProductos);
             Console.WriteLine("Introduce informacion nutricional: ");
             InformacionNutricional = Console.ReadLine();
         }

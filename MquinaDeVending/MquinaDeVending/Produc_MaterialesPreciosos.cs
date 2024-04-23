@@ -22,9 +22,9 @@ namespace MquinaDeVending
             Material = material;
             Peso = peso;
         }
-        public override void AddProducto()
+        public override void AddProducto(ref List<Product_General> ListaProductos)
         {
-            base.AddProducto();
+            base.AddProducto(ref ListaProductos);
             Console.WriteLine("Tipo de Material");
             Material = Console.ReadLine();
             Console.WriteLine("Introduce Peso ");
