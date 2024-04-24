@@ -36,63 +36,78 @@ namespace MquinaDeVending
                 Console.WriteLine("║  4 | Cargar productos a tope               ║");
                 Console.WriteLine("║  5 | Salir                                 ║");
                 Console.WriteLine("╚════════════════════════════════════════════╝");
-                opcion = int.Parse(Console.ReadLine()); //Implementar una excepcion aqui. 
-                Console.Clear();
-                switch (opcion)
+                try //Implementamos una excepción
                 {
-                    case 1:
-                        ComprarProducto();
-                        break;
+                    opcion = int.Parse(Console.ReadLine());
+                    Console.Clear();
+                    switch (opcion)
+                    {
+                        case 1:
+                            ComprarProducto();
+                            break;
 
-                    case 2:
-                        cliente.VerProductos(listaproductos);
-                        break;
+                        case 2:
+                            cliente.VerProductos(listaproductos);
+                            break;
 
-                    case 3:
-                        bool Respusta = admin.IniciarSesion();
-                        if (Respusta == true)
-                        {
-                            Console.WriteLine("Contraseña correcta !!!!");
-                            admin.Menu(ref listaproductos);
+                        case 3:
+                            bool Respusta = admin.IniciarSesion();
+                            if (Respusta == true)
+                            {
+                                Console.WriteLine("Contraseña correcta !!!!");
+                                admin.Menu(ref listaproductos);
 
-                        }
-                        else if (Respusta == false)
-                        {
-                            Console.WriteLine("Contraseña incorrecta !!!!");
-                            Console.WriteLine("Pulse INTRO para continuar...");
+                            }
+                            else if (Respusta == false)
+                            {
+                                Console.WriteLine("Contraseña incorrecta !!!!");
+                                Console.WriteLine("Pulse INTRO para continuar...");
+                                Console.ReadKey();
+                            }
+                            break;
+
+
+                        case 4:
+                            bool respusta = admin.IniciarSesion();
+                            if (respusta == true)
+                            {
+                                Console.WriteLine("Contraseña correcta !!!!");
+
+
+                            }
+                            else if (respusta == false)
+                            {
+                                Console.WriteLine("Contraseña incorrecta !!!!");
+                                Console.WriteLine("Pulse INTRO para continuar...");
+                                Console.ReadKey();
+                            }
+                            break;
+
+                        default:
+                            Console.WriteLine("ERROR");
                             Console.ReadKey();
-                        }
-                        break;
+                            break;
+                    }
 
-
-                    case 4:
-                        bool respusta = admin.IniciarSesion();
-                        if (respusta == true)
-                        {
-                            Console.WriteLine("Contraseña correcta !!!!");
-
-
-                        }
-                        else if (respusta == false)
-                        {
-                            Console.WriteLine("Contraseña incorrecta !!!!");
-                            Console.WriteLine("Pulse INTRO para continuar...");
-                            Console.ReadKey();
-                        }
-                        break;
-
-                    default:
-                        Console.WriteLine("ERROR");
-                        Console.ReadKey();
-                        break;
                 }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Error: Opción inválida. Por favor, ingrese un número valido.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+                Console.WriteLine("Pulse una tecla para continuar: ");
+                Console.ReadKey();
+
             } while (opcion != 5);
             if (opcion == 5)
             {
                 Console.WriteLine("Gracias por todo");
                 Console.ReadKey();
             }
-        }        
+        }
 
         static void Salir()
         {
