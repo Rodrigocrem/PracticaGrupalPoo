@@ -166,57 +166,56 @@ namespace MquinaDeVending
 
         public void CargarProductosFichero()
         {
+            HashSet<int> ids = new HashSet<int>(); 
 
-            FileStream fs = new FileStream($"example_vending_file_practical_work_i.csv", FileMode.Open, FileAccess.ReadWrite); //Abrimos el fichero. 
-            int id = 0;
-            StreamReader streamReader = new StreamReader(fs);
-            StreamWriter streamWriter = new StreamWriter(fs);
-
-            while (streamReader.Peek() != -1)
+            using (FileStream fs = new FileStream($"example_vending_file_practical_work_i.csv", FileMode.Open, FileAccess.ReadWrite))
+            using (StreamReader streamReader = new StreamReader(fs))
             {
-                //REVISAR
-                id++;
-                string line = streamReader.ReadLine();
-                string[] parts = line.Split(';');
-                int product_type = int.Parse(parts[0]);
-                string product_name = parts[1];
-                int product_units = int.Parse(parts[2]);
-                double product_unit_prize = double.Parse(parts[3]);
-                string product_description = parts[4];
-                string Materiales = parts[5];
-                int Peso = int.Parse(parts[6]);
-                string nutritional_information = parts[7];
-                bool has_battery = bool.Parse(parts[8]);
-                bool charged_by_default = bool.Parse(parts[9]);
+                while (streamReader.Peek() != -1)
+                {
+                    string line = streamReader.ReadLine();
+                    string[] parts = line.Split(';');
+                    int product_type = int.Parse(parts[0]);
+                    string product_name = parts[1];
+                    int product_units = int.Parse(parts[2]);
+                    double product_unit_prize = double.Parse(parts[3]);
+                    string product_description = parts[4];
+                    string Materiales = parts[5];
+                    int Peso = int.Parse(parts[6]);
+                    string nutritional_information = parts[7];
+                    bool has_battery = bool.Parse(parts[8]);
+                    bool charged_by_default = bool.Parse(parts[9]);
 
-                try
-                {
-                    switch (product_type)
+                    int id = ids.Count + 1; 
+                    while (ids.Contains(id)) 
                     {
-                        case 1:
-                            Produc_MaterialesPreciosos product_MaterialesPreciosos = new Produc_MaterialesPreciosos(id, product_name, product_unit_prize, product_units, product_description, Materiales, Peso);
-                            break;
-                        case 2:
-                            Product_Alimentos product_Alimentos = new Product_Alimentos(id, product_name, product_unit_prize, product_units, product_description, nutritional_information);
-                            break;
-                        case 3:
-                            Product_Electronica product_Electronica = new Product_Electronica(id, product_name, product_unit_prize, product_units, product_description, Materiales, has_battery, charged_by_default);
-                            break;
+                        id++; 
                     }
-                }
-                finally
-                {
-                    if (streamReader != null)
+
+                    try
                     {
-                        streamReader.Close();
+                        switch (product_type)
+                        {
+                            case 1:
+                                Produc_MaterialesPreciosos product_MaterialesPreciosos = new Produc_MaterialesPreciosos(id, product_name, product_unit_prize, product_units, product_description, Materiales, Peso);
+                                break;
+                            case 2:
+                                Product_Alimentos product_Alimentos = new Product_Alimentos(id, product_name, product_unit_prize, product_units, product_description, nutritional_information);
+                                break;
+                            case 3:
+                                Product_Electronica product_Electronica = new Product_Electronica(id, product_name, product_unit_prize, product_units, product_description, Materiales, has_battery, charged_by_default);
+                                break;
+                        }
+                        ids.Add(id); 
                     }
-                    if (fs != null)
+                    catch (Exception ex)
                     {
-                        fs.Close();
+                        
                     }
                 }
             }
         }
+
 
         public void EliminarUnProducto(ref List<Product_General> ListaProductos)
         {
