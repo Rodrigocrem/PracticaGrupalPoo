@@ -10,10 +10,14 @@ namespace MquinaDeVending
     internal class Cliente
     {
         public Cliente() { }
+
+        // Método para ver los productos en la lista
         public void VerProductos(List<Product_General> ListaProductos)
         {
             foreach (Product_General p in ListaProductos)
             {
+                // Comprobamos el tipo de producto y muestra su información
+
                 if (p is Product_Alimentos)
                 {
 

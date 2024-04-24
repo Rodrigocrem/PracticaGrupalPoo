@@ -8,6 +8,7 @@ namespace MquinaDeVending
 {
     internal class Pago_Efectivo : Pago
     {
+        // Array estático que contiene los valores de las monedas y billetes disponibles
         public double Monto { get; set; }
         public static double[] Coins = new double[]
         {
@@ -33,6 +34,7 @@ namespace MquinaDeVending
             bool coste = false;
             int opcion;
             Monto = 0;
+            // Bucle para permitir al usuario introducir dinero hasta alcanzar o superar la cantidad requerida
             do
             {
                 Console.Clear();
@@ -110,6 +112,7 @@ namespace MquinaDeVending
                         break;
 
                 }
+                // Comprobar si el monto introducido es suficiente para pagar la cantidad requerida.
                 if (Monto == cantidad || Monto > cantidad)
                 {
                     Monto = Monto - cantidad;

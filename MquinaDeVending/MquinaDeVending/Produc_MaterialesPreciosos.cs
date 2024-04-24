@@ -16,12 +16,14 @@ namespace MquinaDeVending
 
         public Produc_MaterialesPreciosos() { }
 
+        // Constructor parametrizado que inicializa todas las propiedades, incluyendo Material y Peso
         public Produc_MaterialesPreciosos(int id, string nombre, double precio, int cantidad, string descripcion, string material, double peso)
          : base(id, nombre, precio, cantidad, descripcion)
         {
             Material = material;
             Peso = peso;
         }
+        // Método para agregar un producto a la lista, solicitando al admin el tipo de material y el peso
         public override void AddProducto(ref List<Product_General> ListaProductos)
         {
             base.AddProducto(ref ListaProductos);
@@ -34,6 +36,8 @@ namespace MquinaDeVending
         {
             return $"{base.SInfo()}\n\t Material: {Material}\n\t Peso: {Peso} ";
         }
+
+        // Método para escribir la información del producto en un archivo de texto
         public override void ToFile()
         {
             StreamWriter sw = new StreamWriter("PElectronicos.txt", true);

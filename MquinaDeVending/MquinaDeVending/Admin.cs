@@ -21,6 +21,7 @@ namespace MquinaDeVending
             NickName = nickName;
             Password = password;
         }
+        // Método para mostrar el menú de opciones del administrador y realizar acciones en la máquina expendedora
 
         public void Menu(ref List<Product_General> ListaProductos)
         {

@@ -39,6 +39,7 @@ namespace MquinaDeVending
                 return false;
             }
         }
+        // Método para realizar el pago con tarjeta.
         public void PagoTarjeta(List<Product_General> Carrito)
         {
             foreach (Product_General p in Carrito)

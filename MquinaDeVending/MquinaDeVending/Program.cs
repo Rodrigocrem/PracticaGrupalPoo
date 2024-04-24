@@ -153,11 +153,11 @@ namespace MquinaDeVending
                     }
 
                     Console.WriteLine("Introduce el Id del producto a comprar: ");
-                    int Idproducto = int.Parse(Console.ReadLine());   ///Hacer un try catch here 
+                    int Idproducto = int.Parse(Console.ReadLine());  
 
                     foreach (Product_General producto in listaproductos2)
                     {
-                        if (Idproducto == Idproducto)
+                        if (Idproducto == Idproducto) //Preguntar mañana a IVAN.
                         {
                             Console.WriteLine(" Error hay un producto con el mismo ID");
                         }
@@ -270,7 +270,7 @@ namespace MquinaDeVending
                                 }
                                 switch (OpcionPago)
                                 {
-                                    case 1:
+                                    case 1: //Gestionar pago en efectivo.
                                         Pago_Efectivo pagoEfectivo = new Pago_Efectivo();
                                         pago = pagoEfectivo.RealizarPago(preciocarrito);
                                         if (pago == true)
@@ -282,7 +282,7 @@ namespace MquinaDeVending
                                             }
                                         }
                                         return;
-                                    case 2:
+                                    case 2: //Gestionar pago con tarjeta. 
                                         Pago_Tarjeta pagoTarjeta = new Pago_Tarjeta();
                                         pago = pagoTarjeta.RealizarPago(preciocarrito);
                                         listaproductos.Clear();

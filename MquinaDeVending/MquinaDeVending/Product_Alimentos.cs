@@ -18,6 +18,7 @@ namespace MquinaDeVending
         {
             InformacionNutricional = informacionnutricional;
         }
+        // Método para agregar un producto a la lista, solicitando información nutricional al admin.
         public override void AddProducto(ref List<Product_General> ListaProductos)
         {
             base.AddProducto(ref ListaProductos);
@@ -33,6 +34,7 @@ namespace MquinaDeVending
         {
             return $"{base.SInfo()}\n\t Información nutricional  {InformacionNutricional}";
         }
+        //Escribimos la información del producto en un archivo de texto
         public override void ToFile()
         {
             StreamWriter sw = new StreamWriter("PAlimentos.txt", true);

@@ -29,14 +29,14 @@ namespace MquinaDeVending
 
         }
 
-        public virtual string SInfo()
+        public virtual string SInfo()  //Devolvemos un return, mostrando la informacion de cada campo.
         {
             return $"Id: {Id}\n\t Nombre: {Nombre}\n\t Precio: {Precio}\n\t Cantidad: {Cantidad}\n\t Descripcion: {Descripcion}\n\t";
         }
 
         public virtual void AddProducto(ref List<Product_General> ListaProductos)
         {
-           
+           //Introducimos un producto y solicitamos los datos a completar. 
             int cantidades = 0;
             int cant1 = 0;
             Console.WriteLine("Introduce Id: ");

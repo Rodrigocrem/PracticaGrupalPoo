@@ -25,6 +25,7 @@ namespace MquinaDeVending
         }
         public override void AddProducto(ref List<Product_General> ListaProductos)
         {
+            //Solicitamos los datos que se añaden al tratarse de la clase electronica.
             base.AddProducto(ref ListaProductos);
             int TPilas;
 
@@ -54,12 +55,14 @@ namespace MquinaDeVending
             }
 
         }
+         /// <summary>
+         /// Comentar. 
+         /// </summary>
         public void ContMPreciosos()
         {
             Thread.Sleep(1000);
             int TPilas;
 
-            //REVISAR
             Console.WriteLine("Introduce Material: ");
             Material = Console.ReadLine();
 
