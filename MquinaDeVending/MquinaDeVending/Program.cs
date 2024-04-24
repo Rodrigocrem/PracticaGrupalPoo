@@ -83,10 +83,7 @@ namespace MquinaDeVending
                             }
                             break;
 
-                        default:
-                            Console.WriteLine("ERROR");
-                            Console.ReadKey();
-                            break;
+                        
                     }
 
                 }
@@ -168,7 +165,11 @@ namespace MquinaDeVending
 
                     foreach (Product_General producto in listaproductos2)
                     {
-                        if (producto.Id == Idproducto)
+                        if (Idproducto == Idproducto)
+                        {
+                            Console.WriteLine(" Error hay un producto con el mismo ID");
+                        }
+                        else if (producto.Id == Idproducto)
                         {
                             productoEncontrado = true;
                             Carrito.Add(producto);

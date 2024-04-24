@@ -166,11 +166,15 @@ namespace MquinaDeVending
 
         public void CargarProductosFichero()
         {
-            FileStream fs = new FileStream($"example_vending_file_practical_work_i.csv", FileMode.Open, FileAccess.Read); //Abrimos el fichero. 
+
+            FileStream fs = new FileStream($"example_vending_file_practical_work_i.csv", FileMode.Open, FileAccess.ReadWrite); //Abrimos el fichero. 
             int id = 0;
             StreamReader streamReader = new StreamReader(fs);
+            StreamWriter streamWriter = new StreamWriter(fs);
+
             while (streamReader.Peek() != -1)
             {
+                //REVISAR
                 id++;
                 string line = streamReader.ReadLine();
                 string[] parts = line.Split(';');
@@ -185,29 +189,35 @@ namespace MquinaDeVending
                 bool has_battery = bool.Parse(parts[8]);
                 bool charged_by_default = bool.Parse(parts[9]);
 
-
-                switch (product_type)
+                try
                 {
-                    case 1:
-                        Produc_MaterialesPreciosos product_MaterialesPreciosos = new Produc_MaterialesPreciosos(id, product_name, product_unit_prize, product_units, product_description, Materiales, Peso);
-                        break;
-                    case 2:
-                        Product_Alimentos product_Alimentos = new Product_Alimentos(id, product_name, product_unit_prize, product_units, product_description, nutritional_information);
-                        break;
-                    case 3:
-                        Product_Electronica product_Electronica = new Product_Electronica(id, product_name, product_unit_prize, product_units, product_description, Materiales, has_battery, charged_by_default);
-                        break;
-
+                    switch (product_type)
+                    {
+                        case 1:
+                            Produc_MaterialesPreciosos product_MaterialesPreciosos = new Produc_MaterialesPreciosos(id, product_name, product_unit_prize, product_units, product_description, Materiales, Peso);
+                            break;
+                        case 2:
+                            Product_Alimentos product_Alimentos = new Product_Alimentos(id, product_name, product_unit_prize, product_units, product_description, nutritional_information);
+                            break;
+                        case 3:
+                            Product_Electronica product_Electronica = new Product_Electronica(id, product_name, product_unit_prize, product_units, product_description, Materiales, has_battery, charged_by_default);
+                            break;
+                    }
                 }
-
-
-
-
-
-
-
+                finally
+                {
+                    if (streamReader != null)
+                    {
+                        streamReader.Close();
+                    }
+                    if (fs != null)
+                    {
+                        fs.Close();
+                    }
+                }
             }
         }
+
         public void EliminarUnProducto(ref List<Product_General> ListaProductos)
         {
             int id = 0;

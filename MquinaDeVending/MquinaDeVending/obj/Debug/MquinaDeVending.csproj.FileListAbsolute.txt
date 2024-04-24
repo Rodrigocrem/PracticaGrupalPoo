@@ -17,3 +17,10 @@ C:\Users\Manu\Source\Repos\Rodrigocrem\PracticaGrupalPoo\MquinaDeVending\MquinaD
 C:\Users\Manu\Source\Repos\Rodrigocrem\PracticaGrupalPoo\MquinaDeVending\MquinaDeVending\obj\Debug\MquinaDeVending.csproj.CoreCompileInputs.cache
 C:\Users\Manu\Source\Repos\Rodrigocrem\PracticaGrupalPoo\MquinaDeVending\MquinaDeVending\obj\Debug\MquinaDeVending.exe
 C:\Users\Manu\Source\Repos\Rodrigocrem\PracticaGrupalPoo\MquinaDeVending\MquinaDeVending\obj\Debug\MquinaDeVending.pdb
+C:\Users\rodri\Source\Repos\PracticaGrupalPoo\MquinaDeVending\MquinaDeVending\bin\Debug\MquinaDeVending.exe.config
+C:\Users\rodri\Source\Repos\PracticaGrupalPoo\MquinaDeVending\MquinaDeVending\bin\Debug\MquinaDeVending.exe
+C:\Users\rodri\Source\Repos\PracticaGrupalPoo\MquinaDeVending\MquinaDeVending\bin\Debug\MquinaDeVending.pdb
+C:\Users\rodri\Source\Repos\PracticaGrupalPoo\MquinaDeVending\MquinaDeVending\obj\Debug\MquinaDeVending.csproj.AssemblyReference.cache
+C:\Users\rodri\Source\Repos\PracticaGrupalPoo\MquinaDeVending\MquinaDeVending\obj\Debug\MquinaDeVending.csproj.CoreCompileInputs.cache
+C:\Users\rodri\Source\Repos\PracticaGrupalPoo\MquinaDeVending\MquinaDeVending\obj\Debug\MquinaDeVending.exe
+C:\Users\rodri\Source\Repos\PracticaGrupalPoo\MquinaDeVending\MquinaDeVending\obj\Debug\MquinaDeVending.pdb
