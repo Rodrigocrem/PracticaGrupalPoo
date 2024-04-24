@@ -89,7 +89,7 @@ namespace MquinaDeVending
         {
             return $"{base.SInfo()}\n\t Material: {Material}\n\t Pilas: {Pilas} Precargado: {Precargado}";
         }
-
+       
         public override void ToFile()
         {
             StreamWriter sw = new StreamWriter("PMPreciosos.txt", true);

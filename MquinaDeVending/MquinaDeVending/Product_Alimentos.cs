@@ -39,6 +39,7 @@ namespace MquinaDeVending
             sw.WriteLine($"{Id},{Nombre},{Precio},{Cantidad},{Descripcion},{InformacionNutricional}");
             sw.Close();
         }
+
         public override Product_General Copiar()
         {
             int id = Id;

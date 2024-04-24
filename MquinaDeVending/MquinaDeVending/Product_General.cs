@@ -33,6 +33,7 @@ namespace MquinaDeVending
         {
             return $"Id: {Id}\n\t Nombre: {Nombre}\n\t Precio: {Precio}\n\t Cantidad: {Cantidad}\n\t Descripcion: {Descripcion}\n\t";
         }
+
         public virtual void AddProducto(ref List<Product_General> ListaProductos)
         {
            

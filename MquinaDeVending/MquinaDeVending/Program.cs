@@ -36,8 +36,7 @@ namespace MquinaDeVending
                 Console.WriteLine("║  4 | Cargar productos a tope               ║");
                 Console.WriteLine("║  5 | Salir                                 ║");
                 Console.WriteLine("╚════════════════════════════════════════════╝");
-                try //Implementamos una excepción
-                {
+                
                     opcion = int.Parse(Console.ReadLine());
                     Console.Clear();
                     switch (opcion)
@@ -72,7 +71,7 @@ namespace MquinaDeVending
                             if (respusta == true)
                             {
                                 Console.WriteLine("Contraseña correcta !!!!");
-
+                                admin.CargarProductosFichero(ref listaproductos);
 
                             }
                             else if (respusta == false)
@@ -83,18 +82,11 @@ namespace MquinaDeVending
                             }
                             break;
 
-                        
-                    }
 
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Error: Opción inválida. Por favor, ingrese un número valido.");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error: " + ex.Message);
-                }
+                    }
+              
+               
+
                 Console.WriteLine("Pulse una tecla para continuar: ");
                 Console.ReadKey();
 

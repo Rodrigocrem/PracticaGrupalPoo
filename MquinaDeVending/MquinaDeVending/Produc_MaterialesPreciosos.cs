@@ -12,11 +12,11 @@ namespace MquinaDeVending
     internal class Produc_MaterialesPreciosos : Product_General
     {
         public string Material { get; set; }
-        public int Peso { get; set; }
+        public double Peso { get; set; }
 
         public Produc_MaterialesPreciosos() { }
 
-        public Produc_MaterialesPreciosos(int id, string nombre, double precio, int cantidad, string descripcion, string material, int peso)
+        public Produc_MaterialesPreciosos(int id, string nombre, double precio, int cantidad, string descripcion, string material, double peso)
          : base(id, nombre, precio, cantidad, descripcion)
         {
             Material = material;
@@ -28,7 +28,7 @@ namespace MquinaDeVending
             Console.WriteLine("Tipo de Material");
             Material = Console.ReadLine();
             Console.WriteLine("Introduce Peso ");
-            Peso = int.Parse(Console.ReadLine());
+            Peso = double.Parse(Console.ReadLine());
         }
         public override string SInfo()
         {
@@ -48,7 +48,7 @@ namespace MquinaDeVending
             int cantidad = Cantidad;
             string descripcion = Descripcion;
             string material = Material;
-            int peso = Peso;
+            double peso = Peso;
             Produc_MaterialesPreciosos product = new Produc_MaterialesPreciosos(Id, Nombre, Precio, Cantidad, Descripcion, Material, Peso);
             return product;
         }

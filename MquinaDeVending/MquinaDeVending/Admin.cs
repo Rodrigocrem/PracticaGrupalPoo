@@ -163,12 +163,17 @@ namespace MquinaDeVending
 
 
         }
-
-        public void CargarProductosFichero()
+        /*La funcion CargarProductosFichero recuperara los datos del fichero productos.csv y segun el tipo de producto lo creara y lo añadira a la lista de productos pasada por referencia*/
+        public void CargarProductosFichero(ref List<Product_General> ListaProductos)
         {
-            HashSet<int> ids = new HashSet<int>(); 
-
-            using (FileStream fs = new FileStream($"example_vending_file_practical_work_i.csv", FileMode.Open, FileAccess.ReadWrite))
+            HashSet<int> ids = new HashSet<int>();
+            string Materiales="";
+            double Peso=0;
+            string nutritional_information="";
+            bool has_battery=false;
+            bool charged_by_default=false;
+            int id = 0;
+            using (FileStream fs = new FileStream($"Productos.csv", FileMode.Open, FileAccess.ReadWrite))
             using (StreamReader streamReader = new StreamReader(fs))
             {
                 while (streamReader.Peek() != -1)
@@ -180,17 +185,29 @@ namespace MquinaDeVending
                     int product_units = int.Parse(parts[2]);
                     double product_unit_prize = double.Parse(parts[3]);
                     string product_description = parts[4];
-                    string Materiales = parts[5];
-                    int Peso = int.Parse(parts[6]);
-                    string nutritional_information = parts[7];
-                    bool has_battery = bool.Parse(parts[8]);
-                    bool charged_by_default = bool.Parse(parts[9]);
-
-                    int id = ids.Count + 1; 
-                    while (ids.Contains(id)) 
+                    if (parts[5] != "")
                     {
-                        id++; 
+                        Materiales = parts[5];
                     }
+                    if (parts[6] != "")
+                    {
+                        Peso = double.Parse(parts[6]);
+                    }
+                    if (parts[7] != "")
+                    {
+                        nutritional_information = parts[7];
+                    }
+                    if (parts[8] != "")
+                    {
+                        charged_by_default = bool.Parse(parts[8]);
+                    }
+                    if (parts[9] != "")
+                    {
+                        has_battery = bool.Parse(parts[9]);
+                    }
+
+                    id++; 
+                    
 
                     try
                     {
@@ -198,15 +215,18 @@ namespace MquinaDeVending
                         {
                             case 1:
                                 Produc_MaterialesPreciosos product_MaterialesPreciosos = new Produc_MaterialesPreciosos(id, product_name, product_unit_prize, product_units, product_description, Materiales, Peso);
+                                ListaProductos.Add(product_MaterialesPreciosos);
                                 break;
                             case 2:
                                 Product_Alimentos product_Alimentos = new Product_Alimentos(id, product_name, product_unit_prize, product_units, product_description, nutritional_information);
+                                ListaProductos.Add(product_Alimentos);
                                 break;
                             case 3:
                                 Product_Electronica product_Electronica = new Product_Electronica(id, product_name, product_unit_prize, product_units, product_description, Materiales, has_battery, charged_by_default);
+                                ListaProductos.Add(product_Electronica);
                                 break;
                         }
-                        ids.Add(id); 
+                        
                     }
                     catch (Exception ex)
                     {
