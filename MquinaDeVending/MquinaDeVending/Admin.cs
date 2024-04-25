@@ -42,7 +42,7 @@ namespace MquinaDeVending
                 break;  
 
                 case 3:
-
+                    EliminarUnidadProducto(ref ListaProductos);
                 break;
 
                 case 4:
@@ -250,6 +250,43 @@ namespace MquinaDeVending
                     ListaProductos.Remove(produc);
                     break;
                 }
+            }
+        }
+        public void EliminarUnidadProducto(ref List<Product_General> ListaProductos)
+        {
+            int id = 0;
+            Console.WriteLine("Introduce el id del producto que quieres eliminar: ");
+            id = int.Parse(Console.ReadLine());
+            bool encontrado = false;
+            int cantidadeliminar = 0;
+            foreach (Product_General produc in ListaProductos)
+            {
+                if (produc.Id == id)
+                {
+                    Console.WriteLine($"Cantidad: {produc.Cantidad}");
+                    Console.WriteLine($"Cantidad a eliminar");
+                    cantidadeliminar = int.Parse(Console.ReadLine());
+                    if( cantidadeliminar <= produc.Cantidad)
+                    {
+                        produc.Cantidad-=cantidadeliminar;
+                        if(produc.Cantidad == 0)
+                        {
+                            ListaProductos.Remove(produc);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Cantidad a eliminar mayor a la cantidad disponible");
+                        Console.ReadLine();
+                    }
+                    encontrado = true;                    
+                    break;
+                }
+            }
+            if (encontrado == false)
+            {
+                Console.WriteLine("No se ha encontrado ningun producto con ese id");
+                Console.ReadKey();
             }
         }
 

@@ -39,8 +39,32 @@ namespace MquinaDeVending
            //Introducimos un producto y solicitamos los datos a completar. 
             int cantidades = 0;
             int cant1 = 0;
-            Console.WriteLine("Introduce Id: ");
-            Id = int.Parse(Console.ReadLine());
+            bool idcorrecto = false;
+            bool encontrado = false;
+            do
+            {
+                encontrado = false;
+                Console.WriteLine("Introduce Id: ");
+                Id = int.Parse(Console.ReadLine());
+                foreach (Product_General item in ListaProductos)
+                {
+                    if (item.Id == Id)
+                    {
+                        encontrado = true;
+                    }
+                }
+                if (encontrado == false)
+                {
+                    idcorrecto = true;
+                }
+                else
+                {
+                    Console.WriteLine("ID ya en uso");
+                    Console.ReadKey();
+                }
+                
+            } while (idcorrecto==false);
+            
             Console.WriteLine("Introduce Nombre: ");
             Nombre = Console.ReadLine();
             Console.WriteLine("Introduce Precio (Euros): ");
